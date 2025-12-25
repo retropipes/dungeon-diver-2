@@ -32,8 +32,7 @@ public class Application {
     private HelpManager helpMgr;
     private GUIManager guiMgr;
     private final MapObjectList objects;
-    private Shop weapons, armor, healer, bank, regenerator, spells, items,
-            socks;
+    private Shop weapons, armor, healer, bank, regenerator, spells, items, socks;
     private BattleGUI battle;
     private boolean IN_GUI, IN_PREFS, IN_GAME;
     public static final int STATUS_GUI = 0;
@@ -43,164 +42,164 @@ public class Application {
 
     // Constructors
     public Application() {
-        this.objects = new MapObjectList();
+	this.objects = new MapObjectList();
     }
 
     // Methods
     void postConstruct() {
-        // Create Managers
-        this.about = new AboutDialog(Support.getVersionString());
-        this.guiMgr = new GUIManager();
-        this.menuMgr = new MenuManager();
-        this.helpMgr = new HelpManager();
-        this.battle = new BattleGUI(false);
-        this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
-        this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
-        this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
-        this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
-        this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
-        this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
-        this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
-        this.socks = new Shop(ShopTypes.SHOP_TYPE_SOCKS);
-        // Cache Logo
-        this.guiMgr.updateLogo();
-        // Set Up Common Dialogs
-        CommonDialogs.setIcon(this.getMicroLogo());
+	// Create Managers
+	this.about = new AboutDialog(Support.getVersionString());
+	this.guiMgr = new GUIManager();
+	this.menuMgr = new MenuManager();
+	this.helpMgr = new HelpManager();
+	this.battle = new BattleGUI(false);
+	this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
+	this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
+	this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
+	this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
+	this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
+	this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
+	this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
+	this.socks = new Shop(ShopTypes.SHOP_TYPE_SOCKS);
+	// Cache Logo
+	this.guiMgr.updateLogo();
+	// Set Up Common Dialogs
+	CommonDialogs.setIcon(this.getMicroLogo());
     }
 
     public void setInGUI(final boolean value) {
-        this.IN_GUI = value;
+	this.IN_GUI = value;
     }
 
     public void setInPrefs(final boolean value) {
-        this.IN_PREFS = value;
+	this.IN_PREFS = value;
     }
 
     public void setInGame(final boolean value) {
-        this.IN_GAME = value;
+	this.IN_GAME = value;
     }
 
     public int getMode() {
-        if (this.IN_PREFS) {
-            return Application.STATUS_PREFS;
-        } else if (this.IN_GUI) {
-            return Application.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
-        } else {
-            return Application.STATUS_NULL;
-        }
+	if (this.IN_PREFS) {
+	    return Application.STATUS_PREFS;
+	} else if (this.IN_GUI) {
+	    return Application.STATUS_GUI;
+	} else if (this.IN_GAME) {
+	    return Application.STATUS_GAME;
+	} else {
+	    return Application.STATUS_NULL;
+	}
     }
 
     public int getFormerMode() {
-        if (this.IN_GUI) {
-            return Application.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
-        } else {
-            return Application.STATUS_NULL;
-        }
+	if (this.IN_GUI) {
+	    return Application.STATUS_GUI;
+	} else if (this.IN_GAME) {
+	    return Application.STATUS_GAME;
+	} else {
+	    return Application.STATUS_NULL;
+	}
     }
 
     public void showMessage(final String msg) {
-        if (this.IN_PREFS) {
-            CommonDialogs.showDialog(msg);
-        } else if (this.IN_GUI) {
-            CommonDialogs.showDialog(msg);
-        } else if (this.IN_GAME) {
-            this.getGameManager().setStatusMessage(msg);
-        } else {
-            CommonDialogs.showDialog(msg);
-        }
+	if (this.IN_PREFS) {
+	    CommonDialogs.showDialog(msg);
+	} else if (this.IN_GUI) {
+	    CommonDialogs.showDialog(msg);
+	} else if (this.IN_GAME) {
+	    this.getGameManager().setStatusMessage(msg);
+	} else {
+	    CommonDialogs.showDialog(msg);
+	}
     }
 
     public MenuManager getMenuManager() {
-        return this.menuMgr;
+	return this.menuMgr;
     }
 
     public GUIManager getGUIManager() {
-        return this.guiMgr;
+	return this.guiMgr;
     }
 
     public GameManager getGameManager() {
-        if (this.gameMgr == null) {
-            this.gameMgr = new GameManager();
-        }
-        return this.gameMgr;
+	if (this.gameMgr == null) {
+	    this.gameMgr = new GameManager();
+	}
+	return this.gameMgr;
     }
 
     public VariablesManager getVariablesManager() {
-        if (this.variablesMgr == null) {
-            this.variablesMgr = new VariablesManager();
-        }
-        return this.variablesMgr;
+	if (this.variablesMgr == null) {
+	    this.variablesMgr = new VariablesManager();
+	}
+	return this.variablesMgr;
     }
 
     public HelpManager getHelpManager() {
-        return this.helpMgr;
+	return this.helpMgr;
     }
 
     public AboutDialog getAboutDialog() {
-        return this.about;
+	return this.about;
     }
 
     public BufferedImageIcon getMicroLogo() {
-        return LogoManager.getMicroLogo();
+	return LogoManager.getMicroLogo();
     }
 
     public Image getIconLogo() {
-        return LogoManager.getIconLogo();
+	return LogoManager.getIconLogo();
     }
 
     public void playLogoSound() {
-        SoundManager.playSound(GameSounds.LOGO);
+	SoundManager.playSound(GameSounds.LOGO);
     }
 
     public JFrame getOutputFrame() {
-        try {
-            if (this.getMode() == Application.STATUS_PREFS) {
-                return PreferencesManager.getPrefFrame();
-            } else if (this.getMode() == Application.STATUS_GUI) {
-                return this.getGUIManager().getGUIFrame();
-            } else if (this.getMode() == Application.STATUS_GAME) {
-                return this.getGameManager().getOutputFrame();
-            } else {
-                return null;
-            }
-        } catch (final NullPointerException npe) {
-            return null;
-        }
+	try {
+	    if (this.getMode() == Application.STATUS_PREFS) {
+		return PreferencesManager.getPrefFrame();
+	    } else if (this.getMode() == Application.STATUS_GUI) {
+		return this.getGUIManager().getGUIFrame();
+	    } else if (this.getMode() == Application.STATUS_GAME) {
+		return this.getGameManager().getOutputFrame();
+	    } else {
+		return null;
+	    }
+	} catch (final NullPointerException npe) {
+	    return null;
+	}
     }
 
     public MapObjectList getObjects() {
-        return this.objects;
+	return this.objects;
     }
 
     public Shop getGenericShop(final int shopType) {
-        switch (shopType) {
-            case ShopTypes.SHOP_TYPE_ARMOR:
-                return this.armor;
-            case ShopTypes.SHOP_TYPE_BANK:
-                return this.bank;
-            case ShopTypes.SHOP_TYPE_HEALER:
-                return this.healer;
-            case ShopTypes.SHOP_TYPE_ITEMS:
-                return this.items;
-            case ShopTypes.SHOP_TYPE_REGENERATOR:
-                return this.regenerator;
-            case ShopTypes.SHOP_TYPE_SOCKS:
-                return this.socks;
-            case ShopTypes.SHOP_TYPE_SPELLS:
-                return this.spells;
-            case ShopTypes.SHOP_TYPE_WEAPONS:
-                return this.weapons;
-            default:
-                // Invalid shop type
-                return null;
-        }
+	switch (shopType) {
+	case ShopTypes.SHOP_TYPE_ARMOR:
+	    return this.armor;
+	case ShopTypes.SHOP_TYPE_BANK:
+	    return this.bank;
+	case ShopTypes.SHOP_TYPE_HEALER:
+	    return this.healer;
+	case ShopTypes.SHOP_TYPE_ITEMS:
+	    return this.items;
+	case ShopTypes.SHOP_TYPE_REGENERATOR:
+	    return this.regenerator;
+	case ShopTypes.SHOP_TYPE_SOCKS:
+	    return this.socks;
+	case ShopTypes.SHOP_TYPE_SPELLS:
+	    return this.spells;
+	case ShopTypes.SHOP_TYPE_WEAPONS:
+	    return this.weapons;
+	default:
+	    // Invalid shop type
+	    return null;
+	}
     }
 
     public BattleGUI getBattle() {
-        return this.battle;
+	return this.battle;
     }
 }

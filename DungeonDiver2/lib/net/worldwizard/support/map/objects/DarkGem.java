@@ -11,27 +11,27 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 public class DarkGem extends GenericLightModifier {
     // Constructors
     public DarkGem() {
-        super();
-        this.setTemplateTransform(new TemplateTransform(0.2, 0.2, 0.2, ""));
+	super();
+	this.setTemplateTransform(new TemplateTransform(0.2, 0.2, 0.2, ""));
     }
 
     @Override
     public String getName() {
-        return "Dark Gem";
+	return "Dark Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Dark Gems";
+	return "Dark Gems";
     }
 
     @Override
     public String getDescription() {
-        return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
+	return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
     }
 
     @Override
     public String getGameImageNameHook() {
-        return "gem";
+	return "gem";
     }
 }

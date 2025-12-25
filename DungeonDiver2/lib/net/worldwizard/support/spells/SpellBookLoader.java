@@ -15,27 +15,25 @@ import net.worldwizard.xio.XDataReader;
 public class SpellBookLoader {
     // Constructors
     private SpellBookLoader() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static SpellBook loadSpellBook(final String file) {
-        if (file.startsWith("$")) {
-            return SystemLoader.loadSpellBook(file);
-        } else {
-            try {
-                final XDataReader spellBookFile = new XDataReader(
-                        Support.getVariables().getBasePath() + File.separator
-                                + "spellbooks" + File.separator + file
-                                + Extension.getSpellBookExtensionWithPeriod(),
-                        Extension.getSpellBookExtension());
-                final SpellBook sb = SpellBook.read(spellBookFile);
-                spellBookFile.close();
-                return sb;
-            } catch (final Exception ex) {
-                Support.getErrorLogger().logError(ex);
-                return null;
-            }
-        }
+	if (file.startsWith("$")) {
+	    return SystemLoader.loadSpellBook(file);
+	} else {
+	    try {
+		final XDataReader spellBookFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+			+ "spellbooks" + File.separator + file + Extension.getSpellBookExtensionWithPeriod(),
+			Extension.getSpellBookExtension());
+		final SpellBook sb = SpellBook.read(spellBookFile);
+		spellBookFile.close();
+		return sb;
+	    } catch (final Exception ex) {
+		Support.getErrorLogger().logError(ex);
+		return null;
+	    }
+	}
     }
 }

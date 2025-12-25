@@ -21,68 +21,62 @@ public class ScoreManager {
 
     // Constructors
     public ScoreManager() {
-        this.table = new SortedScoreTable();
-        this.name = "";
-        this.displayFailMsg = true;
-        this.title = ScoreManager.DIALOG_TITLE;
-        this.viewerTitle = ScoreManager.DIALOG_TITLE;
+	this.table = new SortedScoreTable();
+	this.name = "";
+	this.displayFailMsg = true;
+	this.title = ScoreManager.DIALOG_TITLE;
+	this.viewerTitle = ScoreManager.DIALOG_TITLE;
     }
 
-    public ScoreManager(final int length, final boolean sortOrder,
-            final long startingScore, final boolean showFailedMessage,
-            final String customTitle, final String customUnit) {
-        this.table = new SortedScoreTable(length, sortOrder, startingScore,
-                customUnit);
-        this.name = "";
-        this.displayFailMsg = showFailedMessage;
-        if (customTitle == null || customTitle.equals("")) {
-            this.title = ScoreManager.DIALOG_TITLE;
-        } else {
-            this.title = customTitle;
-        }
-        this.viewerTitle = customTitle;
+    public ScoreManager(final int length, final boolean sortOrder, final long startingScore,
+	    final boolean showFailedMessage, final String customTitle, final String customUnit) {
+	this.table = new SortedScoreTable(length, sortOrder, startingScore, customUnit);
+	this.name = "";
+	this.displayFailMsg = showFailedMessage;
+	if (customTitle == null || customTitle.equals("")) {
+	    this.title = ScoreManager.DIALOG_TITLE;
+	} else {
+	    this.title = customTitle;
+	}
+	this.viewerTitle = customTitle;
     }
 
     // Methods
     public boolean addScore(final long newScore) {
-        boolean success = this.table.checkScore(newScore);
-        if (!success) {
-            if (this.displayFailMsg) {
-                CommonDialogs.showTitledDialog(ScoreManager.DID_NOT_MAKE_LIST,
-                        this.title);
-            }
-        } else {
-            this.name = null;
-            this.name = CommonDialogs
-                    .showTextInputDialog(ScoreManager.NAME_PROMPT, this.title);
-            if (this.name != null) {
-                this.table.addScore(newScore, this.name);
-            } else {
-                success = false;
-            }
-        }
-        return success;
+	boolean success = this.table.checkScore(newScore);
+	if (!success) {
+	    if (this.displayFailMsg) {
+		CommonDialogs.showTitledDialog(ScoreManager.DID_NOT_MAKE_LIST, this.title);
+	    }
+	} else {
+	    this.name = null;
+	    this.name = CommonDialogs.showTextInputDialog(ScoreManager.NAME_PROMPT, this.title);
+	    if (this.name != null) {
+		this.table.addScore(newScore, this.name);
+	    } else {
+		success = false;
+	    }
+	}
+	return success;
     }
 
     public boolean addScore(final long newScore, final String newName) {
-        final boolean success = this.table.checkScore(newScore);
-        if (!success) {
-            if (this.displayFailMsg) {
-                CommonDialogs.showTitledDialog(ScoreManager.DID_NOT_MAKE_LIST,
-                        this.title);
-            }
-        } else {
-            this.table.addScore(newScore, newName);
-        }
-        return success;
+	final boolean success = this.table.checkScore(newScore);
+	if (!success) {
+	    if (this.displayFailMsg) {
+		CommonDialogs.showTitledDialog(ScoreManager.DID_NOT_MAKE_LIST, this.title);
+	    }
+	} else {
+	    this.table.addScore(newScore, newName);
+	}
+	return success;
     }
 
     public boolean checkScore(final long newScore) {
-        return this.table.checkScore(newScore);
+	return this.table.checkScore(newScore);
     }
 
     public void viewTable() {
-        ScoreTableViewer.view(this.table, this.viewerTitle,
-                this.table.getUnit());
+	ScoreTableViewer.view(this.table, this.viewerTitle, this.table.getUnit());
     }
 }

@@ -14,60 +14,60 @@ class BattleViewingWindowManager {
 
     // Constructors
     public BattleViewingWindowManager() {
-        this.locX = 0;
-        this.locY = 0;
-        this.oldLocX = 0;
-        this.oldLocY = 0;
+	this.locX = 0;
+	this.locY = 0;
+	this.oldLocX = 0;
+	this.oldLocY = 0;
     }
 
     // Methods
     public int getViewingWindowLocationX() {
-        return this.locX;
+	return this.locX;
     }
 
     public int getViewingWindowLocationY() {
-        return this.locY;
+	return this.locY;
     }
 
     public int getLowerRightViewingWindowLocationX() {
-        return this.locX + BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X - 1;
+	return this.locX + BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X - 1;
     }
 
     public int getLowerRightViewingWindowLocationY() {
-        return this.locY + BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y - 1;
+	return this.locY + BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y - 1;
     }
 
     public void setViewingWindowCenterX(final int val) {
-        this.locX = val - BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X / 2;
+	this.locX = val - BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X / 2;
     }
 
     public void setViewingWindowCenterY(final int val) {
-        this.locY = val - BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y / 2;
+	this.locY = val - BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y / 2;
     }
 
     public void offsetViewingWindowLocationX(final int val) {
-        this.locX += val;
+	this.locX += val;
     }
 
     public void offsetViewingWindowLocationY(final int val) {
-        this.locY += val;
+	this.locY += val;
     }
 
     public void saveViewingWindow() {
-        this.oldLocX = this.locX;
-        this.oldLocY = this.locY;
+	this.oldLocX = this.locX;
+	this.oldLocY = this.locY;
     }
 
     public void restoreViewingWindow() {
-        this.locX = this.oldLocX;
-        this.locY = this.oldLocY;
+	this.locX = this.oldLocX;
+	this.locY = this.oldLocY;
     }
 
     public int getViewingWindowSizeX() {
-        return BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X;
+	return BattleViewingWindowManager.VIEWING_WINDOW_SIZE_X;
     }
 
     public int getViewingWindowSizeY() {
-        return BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y;
+	return BattleViewingWindowManager.VIEWING_WINDOW_SIZE_Y;
     }
 }

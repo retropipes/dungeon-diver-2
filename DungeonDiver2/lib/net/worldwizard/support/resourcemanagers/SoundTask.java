@@ -16,20 +16,20 @@ class SoundTask extends Thread {
 
     // Constructors
     public SoundTask(final Sound sound) {
-        this.snd = sound;
-        this.setName("Sound Player");
+	this.snd = sound;
+	this.setName("Sound Player");
     }
 
     @Override
     public void run() {
-        try {
-            this.snd.play();
-        } catch (final BufferUnderflowException bue) {
-            // Ignore
-        } catch (final NullPointerException np) {
-            // Ignore
-        } catch (final Throwable t) {
-            Support.getErrorLogger().logError(t);
-        }
+	try {
+	    this.snd.play();
+	} catch (final BufferUnderflowException bue) {
+	    // Ignore
+	} catch (final NullPointerException np) {
+	    // Ignore
+	} catch (final Throwable t) {
+	    Support.getErrorLogger().logError(t);
+	}
     }
 }

@@ -9,51 +9,49 @@ import java.io.OutputStream;
 
 public final class DirectoryUtilities {
     private DirectoryUtilities() {
-        // Do nothing
+	// Do nothing
     }
 
     public static void removeDirectory(final File location) throws IOException {
-        boolean success;
-        if (location.isDirectory()) {
-            final String[] children = location.list();
-            for (final String element : children) {
-                DirectoryUtilities.removeDirectory(new File(location, element));
-            }
-            success = location.delete();
-            if (!success) {
-                throw new IOException("Directory deletion failed!");
-            }
-        } else {
-            success = location.delete();
-            if (!success) {
-                throw new IOException("Directory deletion failed!");
-            }
-        }
+	boolean success;
+	if (location.isDirectory()) {
+	    final String[] children = location.list();
+	    for (final String element : children) {
+		DirectoryUtilities.removeDirectory(new File(location, element));
+	    }
+	    success = location.delete();
+	    if (!success) {
+		throw new IOException("Directory deletion failed!");
+	    }
+	} else {
+	    success = location.delete();
+	    if (!success) {
+		throw new IOException("Directory deletion failed!");
+	    }
+	}
     }
 
-    public static void copyFile(final File sourceLocation,
-            final File targetLocation) throws IOException {
-        try (InputStream in = new FileInputStream(sourceLocation);
-                OutputStream out = new FileOutputStream(targetLocation)) {
-            // Copy the bits from instream to outstream
-            final byte[] buf = new byte[1024];
-            int len;
-            while ((len = in.read(buf)) > 0) {
-                out.write(buf, 0, len);
-            }
-        }
+    public static void copyFile(final File sourceLocation, final File targetLocation) throws IOException {
+	try (InputStream in = new FileInputStream(sourceLocation);
+		OutputStream out = new FileOutputStream(targetLocation)) {
+	    // Copy the bits from instream to outstream
+	    final byte[] buf = new byte[1024];
+	    int len;
+	    while ((len = in.read(buf)) > 0) {
+		out.write(buf, 0, len);
+	    }
+	}
     }
 
-    public static void copyRAMFile(final InputStream in,
-            final File targetLocation) throws IOException {
-        try (OutputStream out = new FileOutputStream(targetLocation)) {
-            // Copy the bits from instream to outstream
-            final byte[] buf = new byte[1024];
-            int len;
-            while ((len = in.read(buf)) > 0) {
-                out.write(buf, 0, len);
-            }
-            in.close();
-        }
+    public static void copyRAMFile(final InputStream in, final File targetLocation) throws IOException {
+	try (OutputStream out = new FileOutputStream(targetLocation)) {
+	    // Copy the bits from instream to outstream
+	    final byte[] buf = new byte[1024];
+	    int len;
+	    while ((len = in.read(buf)) > 0) {
+		out.write(buf, 0, len);
+	    }
+	    in.close();
+	}
     }
 }

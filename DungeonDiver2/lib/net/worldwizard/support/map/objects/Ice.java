@@ -10,27 +10,27 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 
 public class Ice extends GenericSpecialGround {
     public Ice() {
-        super(false);
-        this.setTemplateTransform(new TemplateTransform(0.75, 1.0, 1.0, ""));
+	super(false);
+	this.setTemplateTransform(new TemplateTransform(0.75, 1.0, 1.0, ""));
     }
 
     @Override
     public String getName() {
-        return "Ice";
+	return "Ice";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Ice";
+	return "Squares of Ice";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Ice is one of the many types of ground - it is frictionless. Anything that crosses it will slide.";
+	return "Ice is one of the many types of ground - it is frictionless. Anything that crosses it will slide.";
     }
 }

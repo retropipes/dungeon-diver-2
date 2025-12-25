@@ -11,27 +11,27 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 public class Dirt extends GenericGround {
     // Constructors
     public Dirt() {
-        super();
-        this.setTemplateTransform(new TemplateTransform(0.5, 0.3, 0.1, ""));
+	super();
+	this.setTemplateTransform(new TemplateTransform(0.5, 0.3, 0.1, ""));
     }
 
     @Override
     public String getName() {
-        return "Dirt";
+	return "Dirt";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Dirt";
+	return "Squares of Dirt";
     }
 
     @Override
     public String getDescription() {
-        return "Dirt is one of the many types of ground.";
+	return "Dirt is one of the many types of ground.";
     }
 
     @Override
     public String getGameImageNameHook() {
-        return "textured";
+	return "textured";
     }
 }

@@ -3,11 +3,11 @@ package net.worldwizard.support.creatures.monsters;
 public class DefiniteFixedStaticMonster extends DefiniteFixedBaseMonster {
     // Constructors
     DefiniteFixedStaticMonster() {
-        super();
+	super();
     }
 
     @Override
     public boolean dynamic() {
-        return false;
+	return false;
     }
 }

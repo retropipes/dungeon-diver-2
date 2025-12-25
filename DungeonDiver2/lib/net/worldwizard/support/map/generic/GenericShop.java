@@ -14,48 +14,48 @@ public abstract class GenericShop extends MapObject {
 
     // Constructors
     public GenericShop(final int newShopType) {
-        super(false);
-        this.setTemplateTransform(new TemplateTransform(1.0, 0.75, 0.5, ""));
-        this.shopType = newShopType;
-        // Create post-move script
-        this.postMove = new GameScript();
-        final GameScriptEntry act0 = new GameScriptEntry();
-        act0.setActionCode(GameActionCode.SHOP);
-        act0.addActionArg(new GameScriptEntryArgument(this.shopType));
-        act0.finalizeActionArgs();
-        this.postMove.addAction(act0);
-        this.postMove.finalizeActions();
+	super(false);
+	this.setTemplateTransform(new TemplateTransform(1.0, 0.75, 0.5, ""));
+	this.shopType = newShopType;
+	// Create post-move script
+	this.postMove = new GameScript();
+	final GameScriptEntry act0 = new GameScriptEntry();
+	act0.setActionCode(GameActionCode.SHOP);
+	act0.addActionArg(new GameScriptEntryArgument(this.shopType));
+	act0.finalizeActionArgs();
+	this.postMove.addAction(act0);
+	this.postMove.finalizeActions();
     }
 
     // Methods
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_SHOP);
+	this.type.set(TypeConstants.TYPE_SHOP);
     }
 
     @Override
-    public GameScript getPostMoveScript(final boolean ie, final int dirX,
-            final int dirY, final int dirZ, final Map map) {
-        return this.postMove;
+    public GameScript getPostMoveScript(final boolean ie, final int dirX, final int dirY, final int dirZ,
+	    final Map map) {
+	return this.postMove;
     }
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public boolean enabledInBattle() {
-        return false;
+	return false;
     }
 }

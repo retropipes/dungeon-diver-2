@@ -13,35 +13,35 @@ public abstract class GenericLightModifier extends MapObject {
 
     // Constructors
     protected GenericLightModifier() {
-        super(true);
+	super(true);
     }
 
     public int getEffectRadius() {
-        return GenericLightModifier.EFFECT_RADIUS;
+	return GenericLightModifier.EFFECT_RADIUS;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_LIGHT_MODIFIER);
+	this.type.set(TypeConstants.TYPE_LIGHT_MODIFIER);
     }
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public boolean enabledInBattle() {
-        return false;
+	return false;
     }
 }

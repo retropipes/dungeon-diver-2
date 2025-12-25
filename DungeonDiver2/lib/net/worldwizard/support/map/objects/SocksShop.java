@@ -12,21 +12,21 @@ import net.worldwizard.support.map.generic.GenericShop;
 public class SocksShop extends GenericShop {
     // Constructors
     public SocksShop() {
-        super(ShopTypes.SHOP_TYPE_SOCKS);
+	super(ShopTypes.SHOP_TYPE_SOCKS);
     }
 
     @Override
     public String getName() {
-        return "Socks Shop";
+	return "Socks Shop";
     }
 
     @Override
     public String getPluralName() {
-        return "Socks Shops";
+	return "Socks Shops";
     }
 
     @Override
     public String getDescription() {
-        return "Socks Shops sell enchanted socks that act as you walk.";
+	return "Socks Shops sell enchanted socks that act as you walk.";
     }
 }

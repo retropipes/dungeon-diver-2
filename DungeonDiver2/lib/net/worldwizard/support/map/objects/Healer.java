@@ -6,21 +6,21 @@ import net.worldwizard.support.map.generic.GenericShop;
 public class Healer extends GenericShop {
     // Constructors
     public Healer() {
-        super(ShopTypes.SHOP_TYPE_HEALER);
+	super(ShopTypes.SHOP_TYPE_HEALER);
     }
 
     @Override
     public String getName() {
-        return "Healer";
+	return "Healer";
     }
 
     @Override
     public String getPluralName() {
-        return "Healers";
+	return "Healers";
     }
 
     @Override
     public String getDescription() {
-        return "Healers restore health, for a fee.";
+	return "Healers restore health, for a fee.";
     }
 }

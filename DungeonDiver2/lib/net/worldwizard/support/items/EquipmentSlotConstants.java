@@ -17,7 +17,6 @@ public class EquipmentSlotConstants {
     public static final int SLOT_LEGS = 11;
     public static final int SLOT_FEET = 12;
     static final int MAX_SLOTS = 13;
-    static final String[] SLOT_NAMES = { "Helmet", "Necklace", "Main Hand",
-            "Off-Hand", "Robe", "Cape", "Shirt", "Bracers", "Gloves", "Ring",
-            "Belt", "Pants", "Boots" };
+    static final String[] SLOT_NAMES = { "Helmet", "Necklace", "Main Hand", "Off-Hand", "Robe", "Cape", "Shirt",
+	    "Bracers", "Gloves", "Ring", "Belt", "Pants", "Boots" };
 }

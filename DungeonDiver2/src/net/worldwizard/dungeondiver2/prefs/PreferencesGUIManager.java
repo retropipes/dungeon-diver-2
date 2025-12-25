@@ -49,246 +49,225 @@ class PreferencesGUIManager {
 
     // Constructors
     PreferencesGUIManager() {
-        this.music = new JCheckBox[PreferencesManager.MUSIC_LENGTH];
-        this.setUpGUI();
-        this.setDefaultPrefs();
+	this.music = new JCheckBox[PreferencesManager.MUSIC_LENGTH];
+	this.setUpGUI();
+	this.setDefaultPrefs();
     }
 
     // Methods
     private static int getGridLength() {
-        return 5;
+	return 5;
     }
 
     public JFrame getPrefFrame() {
-        if (this.prefFrame != null && this.prefFrame.isVisible()) {
-            return this.prefFrame;
-        } else {
-            return null;
-        }
+	if (this.prefFrame != null && this.prefFrame.isVisible()) {
+	    return this.prefFrame;
+	} else {
+	    return null;
+	}
     }
 
     public void showPrefs() {
-        final Application app = DungeonDiver2.getApplication();
-        app.setInPrefs(true);
-        if (System.getProperty("os.name").startsWith("Mac OS X")) {
-            this.prefFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
-        }
-        app.getMenuManager().setPrefMenus();
-        this.prefFrame.setVisible(true);
-        final int formerMode = app.getFormerMode();
-        if (formerMode == Application.STATUS_GUI) {
-            app.getGUIManager().hideGUITemporarily();
-        } else if (formerMode == Application.STATUS_GAME) {
-            app.getGameManager().hideOutput();
-        }
+	final Application app = DungeonDiver2.getApplication();
+	app.setInPrefs(true);
+	if (System.getProperty("os.name").startsWith("Mac OS X")) {
+	    this.prefFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
+	}
+	app.getMenuManager().setPrefMenus();
+	this.prefFrame.setVisible(true);
+	final int formerMode = app.getFormerMode();
+	if (formerMode == Application.STATUS_GUI) {
+	    app.getGUIManager().hideGUITemporarily();
+	} else if (formerMode == Application.STATUS_GAME) {
+	    app.getGameManager().hideOutput();
+	}
     }
 
     public void hidePrefs() {
-        final Application app = DungeonDiver2.getApplication();
-        app.setInPrefs(false);
-        this.prefFrame.setVisible(false);
-        PreferencesManager.writePrefs();
-        final int formerMode = app.getFormerMode();
-        if (formerMode == Application.STATUS_GUI) {
-            app.getGUIManager().showGUI();
-        } else if (formerMode == Application.STATUS_GAME) {
-            app.getGameManager().showOutput();
-        }
+	final Application app = DungeonDiver2.getApplication();
+	app.setInPrefs(false);
+	this.prefFrame.setVisible(false);
+	PreferencesManager.writePrefs();
+	final int formerMode = app.getFormerMode();
+	if (formerMode == Application.STATUS_GUI) {
+	    app.getGUIManager().showGUI();
+	} else if (formerMode == Application.STATUS_GAME) {
+	    app.getGameManager().showOutput();
+	}
     }
 
     private void loadPrefs() {
-        this.generatorRandomness
-                .setValue(PreferencesManager.getGeneratorRandomness());
-        this.battleSpeedChoices
-                .setSelectedIndex(PreferencesManager.getBattleSpeedValue());
-        for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
-            this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
-        }
-        this.checkUpdatesStartup
-                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
-        this.checkBetaUpdatesStartup.setSelected(
-                PreferencesManager.shouldCheckBetaUpdatesAtStartup());
-        this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
+	this.generatorRandomness.setValue(PreferencesManager.getGeneratorRandomness());
+	this.battleSpeedChoices.setSelectedIndex(PreferencesManager.getBattleSpeedValue());
+	for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
+	    this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
+	}
+	this.checkUpdatesStartup.setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
+	this.checkBetaUpdatesStartup.setSelected(PreferencesManager.shouldCheckBetaUpdatesAtStartup());
+	this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
     }
 
     public void setPrefs() {
-        PreferencesManager
-                .setGeneratorRandomness(this.generatorRandomness.getValue());
-        PreferencesManager
-                .setBattleSpeed(this.battleSpeedChoices.getSelectedIndex());
-        for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
-            PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
-        }
-        PreferencesManager.setCheckUpdatesAtStartup(
-                this.checkUpdatesStartup.isSelected());
-        PreferencesManager.setCheckBetaUpdatesAtStartup(
-                this.checkBetaUpdatesStartup.isSelected());
-        PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
-        this.hidePrefs();
+	PreferencesManager.setGeneratorRandomness(this.generatorRandomness.getValue());
+	PreferencesManager.setBattleSpeed(this.battleSpeedChoices.getSelectedIndex());
+	for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
+	    PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
+	}
+	PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup.isSelected());
+	PreferencesManager.setCheckBetaUpdatesAtStartup(this.checkBetaUpdatesStartup.isSelected());
+	PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
+	this.hidePrefs();
     }
 
     public final void setDefaultPrefs() {
-        PreferencesManager.readPrefs();
-        this.loadPrefs();
+	PreferencesManager.readPrefs();
+	this.loadPrefs();
     }
 
     private void setUpGUI() {
-        this.handler = new EventHandler();
-        this.prefFrame = new JFrame("Preferences");
-        this.prefTabPane = new JTabbedPane();
-        this.mainPrefPane = new Container();
-        this.gamePane = new Container();
-        this.musicPane = new Container();
-        this.miscPane = new Container();
-        this.prefTabPane.setOpaque(true);
-        this.buttonPane = new Container();
-        this.prefsOK = new JButton("OK");
-        this.prefsOK.setDefaultCapable(true);
-        this.prefFrame.getRootPane().setDefaultButton(this.prefsOK);
-        this.prefsCancel = new JButton("Cancel");
-        this.prefsCancel.setDefaultCapable(false);
-        this.battleSpeedChoiceArray = new String[] { "Very Slow", "Slow",
-                "Moderate", "Fast", "Very Fast" };
-        this.generatorRandomness = new JSlider(SwingConstants.HORIZONTAL, 0, 6,
-                3);
-        this.generatorRandomness.setMajorTickSpacing(1);
-        this.generatorRandomness.setPaintTicks(true);
-        this.generatorRandomness.setSnapToTicks(true);
-        this.generatorRandomnessValue = new JLabel("Generator Randomness");
-        this.battleSpeedChoices = new JComboBox<>(this.battleSpeedChoiceArray);
-        this.music[PreferencesManager.MUSIC_ALL] = new JCheckBox(
-                "Enable ALL music", true);
-        this.music[PreferencesManager.MUSIC_EXPLORING] = new JCheckBox(
-                "Enable exploring music", true);
-        this.music[PreferencesManager.MUSIC_BATTLE] = new JCheckBox(
-                "Enable battle music", true);
-        this.music[PreferencesManager.MUSIC_BOSS] = new JCheckBox(
-                "Enable boss music", true);
-        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
-                true);
-        this.checkBetaUpdatesStartup = new JCheckBox(
-                "Check for Beta Updates at Startup", true);
-        this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
-        this.prefFrame.setContentPane(this.mainPrefPane);
-        this.prefFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.prefFrame.addWindowListener(this.handler);
-        this.mainPrefPane.setLayout(new BorderLayout());
-        this.prefFrame.setResizable(false);
-        this.gamePane.setLayout(
-                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
-        this.gamePane.add(new JLabel("Battle Speed"));
-        this.gamePane.add(this.battleSpeedChoices);
-        this.gamePane.add(this.moveOneAtATime);
-        this.gamePane.add(this.generatorRandomnessValue);
-        this.gamePane.add(this.generatorRandomness);
-        this.musicPane.setLayout(
-                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
-        for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
-            this.musicPane.add(this.music[x]);
-        }
-        this.miscPane.setLayout(
-                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
-        this.miscPane.add(this.checkUpdatesStartup);
-        if (Support.isBetaModeEnabled()) {
-            this.miscPane.add(this.checkBetaUpdatesStartup);
-        }
-        this.buttonPane.setLayout(new FlowLayout());
-        this.buttonPane.add(this.prefsOK);
-        this.buttonPane.add(this.prefsCancel);
-        this.prefTabPane.addTab("Game", null, this.gamePane, "Game");
-        this.prefTabPane.addTab("Music", null, this.musicPane, "Music");
-        this.prefTabPane.addTab("Misc.", null, this.miscPane, "Misc.");
-        this.mainPrefPane.add(this.prefTabPane, BorderLayout.CENTER);
-        this.mainPrefPane.add(this.buttonPane, BorderLayout.SOUTH);
-        this.music[PreferencesManager.MUSIC_ALL].addItemListener(this.handler);
-        this.prefsOK.addActionListener(this.handler);
-        this.prefsCancel.addActionListener(this.handler);
-        final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
-        this.prefFrame.setIconImage(iconlogo);
-        this.prefFrame.pack();
+	this.handler = new EventHandler();
+	this.prefFrame = new JFrame("Preferences");
+	this.prefTabPane = new JTabbedPane();
+	this.mainPrefPane = new Container();
+	this.gamePane = new Container();
+	this.musicPane = new Container();
+	this.miscPane = new Container();
+	this.prefTabPane.setOpaque(true);
+	this.buttonPane = new Container();
+	this.prefsOK = new JButton("OK");
+	this.prefsOK.setDefaultCapable(true);
+	this.prefFrame.getRootPane().setDefaultButton(this.prefsOK);
+	this.prefsCancel = new JButton("Cancel");
+	this.prefsCancel.setDefaultCapable(false);
+	this.battleSpeedChoiceArray = new String[] { "Very Slow", "Slow", "Moderate", "Fast", "Very Fast" };
+	this.generatorRandomness = new JSlider(SwingConstants.HORIZONTAL, 0, 6, 3);
+	this.generatorRandomness.setMajorTickSpacing(1);
+	this.generatorRandomness.setPaintTicks(true);
+	this.generatorRandomness.setSnapToTicks(true);
+	this.generatorRandomnessValue = new JLabel("Generator Randomness");
+	this.battleSpeedChoices = new JComboBox<>(this.battleSpeedChoiceArray);
+	this.music[PreferencesManager.MUSIC_ALL] = new JCheckBox("Enable ALL music", true);
+	this.music[PreferencesManager.MUSIC_EXPLORING] = new JCheckBox("Enable exploring music", true);
+	this.music[PreferencesManager.MUSIC_BATTLE] = new JCheckBox("Enable battle music", true);
+	this.music[PreferencesManager.MUSIC_BOSS] = new JCheckBox("Enable boss music", true);
+	this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup", true);
+	this.checkBetaUpdatesStartup = new JCheckBox("Check for Beta Updates at Startup", true);
+	this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
+	this.prefFrame.setContentPane(this.mainPrefPane);
+	this.prefFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+	this.prefFrame.addWindowListener(this.handler);
+	this.mainPrefPane.setLayout(new BorderLayout());
+	this.prefFrame.setResizable(false);
+	this.gamePane.setLayout(new GridLayout(PreferencesGUIManager.getGridLength(), 1));
+	this.gamePane.add(new JLabel("Battle Speed"));
+	this.gamePane.add(this.battleSpeedChoices);
+	this.gamePane.add(this.moveOneAtATime);
+	this.gamePane.add(this.generatorRandomnessValue);
+	this.gamePane.add(this.generatorRandomness);
+	this.musicPane.setLayout(new GridLayout(PreferencesGUIManager.getGridLength(), 1));
+	for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
+	    this.musicPane.add(this.music[x]);
+	}
+	this.miscPane.setLayout(new GridLayout(PreferencesGUIManager.getGridLength(), 1));
+	this.miscPane.add(this.checkUpdatesStartup);
+	if (Support.isBetaModeEnabled()) {
+	    this.miscPane.add(this.checkBetaUpdatesStartup);
+	}
+	this.buttonPane.setLayout(new FlowLayout());
+	this.buttonPane.add(this.prefsOK);
+	this.buttonPane.add(this.prefsCancel);
+	this.prefTabPane.addTab("Game", null, this.gamePane, "Game");
+	this.prefTabPane.addTab("Music", null, this.musicPane, "Music");
+	this.prefTabPane.addTab("Misc.", null, this.miscPane, "Misc.");
+	this.mainPrefPane.add(this.prefTabPane, BorderLayout.CENTER);
+	this.mainPrefPane.add(this.buttonPane, BorderLayout.SOUTH);
+	this.music[PreferencesManager.MUSIC_ALL].addItemListener(this.handler);
+	this.prefsOK.addActionListener(this.handler);
+	this.prefsCancel.addActionListener(this.handler);
+	final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
+	this.prefFrame.setIconImage(iconlogo);
+	this.prefFrame.pack();
     }
 
-    private class EventHandler
-            implements ActionListener, ItemListener, WindowListener {
-        public EventHandler() {
-            // TODO Auto-generated constructor stub
-        }
+    private class EventHandler implements ActionListener, ItemListener, WindowListener {
+	public EventHandler() {
+	    // TODO Auto-generated constructor stub
+	}
 
-        // Handle buttons
-        @Override
-        public void actionPerformed(final ActionEvent e) {
-            try {
-                final PreferencesGUIManager pm = PreferencesGUIManager.this;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("OK")) {
-                    pm.setPrefs();
-                } else if (cmd.equals("Cancel")) {
-                    pm.hidePrefs();
-                }
-            } catch (final Exception ex) {
-                DungeonDiver2.getErrorLogger().logError(ex);
-            }
-        }
+	// Handle buttons
+	@Override
+	public void actionPerformed(final ActionEvent e) {
+	    try {
+		final PreferencesGUIManager pm = PreferencesGUIManager.this;
+		final String cmd = e.getActionCommand();
+		if (cmd.equals("OK")) {
+		    pm.setPrefs();
+		} else if (cmd.equals("Cancel")) {
+		    pm.hidePrefs();
+		}
+	    } catch (final Exception ex) {
+		DungeonDiver2.getErrorLogger().logError(ex);
+	    }
+	}
 
-        @Override
-        public void itemStateChanged(final ItemEvent e) {
-            try {
-                final PreferencesGUIManager pm = PreferencesGUIManager.this;
-                final Object o = e.getItem();
-                if (o.getClass().equals(JCheckBox.class)) {
-                    final JCheckBox check = (JCheckBox) o;
-                    if (check.equals(pm.music[PreferencesManager.MUSIC_ALL])) {
-                        if (e.getStateChange() == ItemEvent.SELECTED) {
-                            for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                                pm.music[x].setEnabled(true);
-                            }
-                        } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                            for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                                pm.music[x].setEnabled(false);
-                            }
-                        }
-                    }
-                }
-            } catch (final Exception ex) {
-                DungeonDiver2.getErrorLogger().logError(ex);
-            }
-        }
+	@Override
+	public void itemStateChanged(final ItemEvent e) {
+	    try {
+		final PreferencesGUIManager pm = PreferencesGUIManager.this;
+		final Object o = e.getItem();
+		if (o.getClass().equals(JCheckBox.class)) {
+		    final JCheckBox check = (JCheckBox) o;
+		    if (check.equals(pm.music[PreferencesManager.MUSIC_ALL])) {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+			    for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
+				pm.music[x].setEnabled(true);
+			    }
+			} else if (e.getStateChange() == ItemEvent.DESELECTED) {
+			    for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
+				pm.music[x].setEnabled(false);
+			    }
+			}
+		    }
+		}
+	    } catch (final Exception ex) {
+		DungeonDiver2.getErrorLogger().logError(ex);
+	    }
+	}
 
-        @Override
-        public void windowOpened(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowOpened(final WindowEvent e) {
+	    // Do nothing
+	}
 
-        @Override
-        public void windowClosing(final WindowEvent e) {
-            final PreferencesGUIManager pm = PreferencesGUIManager.this;
-            pm.hidePrefs();
-        }
+	@Override
+	public void windowClosing(final WindowEvent e) {
+	    final PreferencesGUIManager pm = PreferencesGUIManager.this;
+	    pm.hidePrefs();
+	}
 
-        @Override
-        public void windowClosed(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowClosed(final WindowEvent e) {
+	    // Do nothing
+	}
 
-        @Override
-        public void windowIconified(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowIconified(final WindowEvent e) {
+	    // Do nothing
+	}
 
-        @Override
-        public void windowDeiconified(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowDeiconified(final WindowEvent e) {
+	    // Do nothing
+	}
 
-        @Override
-        public void windowActivated(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowActivated(final WindowEvent e) {
+	    // Do nothing
+	}
 
-        @Override
-        public void windowDeactivated(final WindowEvent e) {
-            // Do nothing
-        }
+	@Override
+	public void windowDeactivated(final WindowEvent e) {
+	    // Do nothing
+	}
     }
 }

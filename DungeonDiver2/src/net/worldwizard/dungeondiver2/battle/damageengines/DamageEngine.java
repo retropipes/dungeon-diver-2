@@ -13,6 +13,6 @@ public abstract class DamageEngine {
     public abstract boolean weaponMissed();
 
     public static DamageEngine getInstance() {
-        return new PercentDamageEngine();
+	return new PercentDamageEngine();
     }
 }

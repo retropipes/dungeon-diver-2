@@ -20,58 +20,52 @@ public class Variables {
 
     // Constructors
     public Variables(final boolean system) {
-        if (system) {
-            this.basePath = System.getProperty("java.io.tmpdir")
-                    + File.separator + "Support" + File.separator + "$"
-                    + Extension.getVariablesExtensionWithPeriod();
-            final File base = new File(this.basePath);
-            if (!base.exists()) {
-                base.mkdirs();
-            }
-            this.variablesID = "$";
-        } else {
-            final long random = new RandomRange(0, Long.MAX_VALUE)
-                    .generateLong();
-            final String randomID = Long.toHexString(random);
-            this.basePath = System.getProperty("java.io.tmpdir")
-                    + File.separator + "Support" + File.separator + randomID
-                    + Extension.getVariablesExtensionWithPeriod();
-            final File base = new File(this.basePath);
-            if (!base.exists()) {
-                base.mkdirs();
-            }
-            this.variablesID = IDGenerator.generateRandomID();
-        }
+	if (system) {
+	    this.basePath = System.getProperty("java.io.tmpdir") + File.separator + "Support" + File.separator + "$"
+		    + Extension.getVariablesExtensionWithPeriod();
+	    final File base = new File(this.basePath);
+	    if (!base.exists()) {
+		base.mkdirs();
+	    }
+	    this.variablesID = "$";
+	} else {
+	    final long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
+	    final String randomID = Long.toHexString(random);
+	    this.basePath = System.getProperty("java.io.tmpdir") + File.separator + "Support" + File.separator
+		    + randomID + Extension.getVariablesExtensionWithPeriod();
+	    final File base = new File(this.basePath);
+	    if (!base.exists()) {
+		base.mkdirs();
+	    }
+	    this.variablesID = IDGenerator.generateRandomID();
+	}
     }
 
     // Static Methods
     public static String getTempFolder() {
-        return System.getProperty("java.io.tmpdir") + File.separator
-                + "Support";
+	return System.getProperty("java.io.tmpdir") + File.separator + "Support";
     }
 
     // Methods
     public String getBasePath() {
-        return this.basePath;
+	return this.basePath;
     }
 
     public String getVariablesID() {
-        return this.variablesID;
+	return this.variablesID;
     }
 
     public void read() throws IOException {
-        final XDataReader reader = new XDataReader(
-                this.basePath + File.separator + "metadata.xml",
-                Extension.getVariablesExtension());
-        this.variablesID = reader.readString();
-        reader.close();
+	final XDataReader reader = new XDataReader(this.basePath + File.separator + "metadata.xml",
+		Extension.getVariablesExtension());
+	this.variablesID = reader.readString();
+	reader.close();
     }
 
     public void write() throws IOException {
-        final XDataWriter writer = new XDataWriter(
-                this.basePath + File.separator + "metadata.xml",
-                Extension.getVariablesExtension());
-        writer.writeString(this.variablesID);
-        writer.close();
+	final XDataWriter writer = new XDataWriter(this.basePath + File.separator + "metadata.xml",
+		Extension.getVariablesExtension());
+	writer.writeString(this.variablesID);
+	writer.close();
     }
 }

@@ -25,58 +25,56 @@ public class DungeonDiver2 {
 
     // Methods
     public static Application getApplication() {
-        return DungeonDiver2.application;
+	return DungeonDiver2.application;
     }
 
     public static ErrorLogger getErrorLogger() {
-        return Support.getErrorLogger();
+	return Support.getErrorLogger();
     }
 
     public static ErrorLogger getNonFatalLogger() {
-        return Support.getNonFatalLogger();
+	return Support.getNonFatalLogger();
     }
 
     public static String getProgramName() {
-        return DungeonDiver2.PROGRAM_NAME;
+	return DungeonDiver2.PROGRAM_NAME;
     }
 
     public static void main(final String[] args) {
-        try {
-            // Integrate with host platform
-            var i = Integration.integrate();
-            // Load system variables
-            SystemVariablesLoader.loadSystemVariables();
-            // Create local variables
-            Support.createVariables();
-            // Initialize application
-            DungeonDiver2.application = new Application();
-            DungeonDiver2.application.postConstruct();
-            DungeonDiver2.application.playLogoSound();
-            DungeonDiver2.application.getGUIManager().showGUI();
-            // Initialize map
-            DungeonDiver2.application.getVariablesManager().setMap(new Map());
-            DungeonDiver2.application.getVariablesManager().getMap().addLevel(
-                    Support.MAP_ROWS, Support.MAP_COLS, Support.MAP_FLOORS);
-            // Register platform hooks
-            i.setAboutHandler(
-                    DungeonDiver2.application.getAboutDialog());
-            i.setOpenFileHandler(
-                    DungeonDiver2.application.getVariablesManager());
-            i.setPreferencesHandler(new PreferencesLauncher());
-            i.setQuitHandler(DungeonDiver2.application.getGUIManager());
-            // Activate registered AIs
-            AIRegistration.activateRegisteredAIs();
-            // Set default title
-            CommonDialogs.setDefaultTitle(DungeonDiver2.PROGRAM_NAME);
-        } catch (final Throwable t) {
-            DungeonDiver2.getErrorLogger().logError(t);
-        }
+	try {
+	    // Integrate with host platform
+	    var i = Integration.integrate();
+	    // Load system variables
+	    SystemVariablesLoader.loadSystemVariables();
+	    // Create local variables
+	    Support.createVariables();
+	    // Initialize application
+	    DungeonDiver2.application = new Application();
+	    DungeonDiver2.application.postConstruct();
+	    DungeonDiver2.application.playLogoSound();
+	    DungeonDiver2.application.getGUIManager().showGUI();
+	    // Initialize map
+	    DungeonDiver2.application.getVariablesManager().setMap(new Map());
+	    DungeonDiver2.application.getVariablesManager().getMap().addLevel(Support.MAP_ROWS, Support.MAP_COLS,
+		    Support.MAP_FLOORS);
+	    // Register platform hooks
+	    i.setAboutHandler(DungeonDiver2.application.getAboutDialog());
+	    i.setOpenFileHandler(DungeonDiver2.application.getVariablesManager());
+	    i.setPreferencesHandler(new PreferencesLauncher());
+	    i.setQuitHandler(DungeonDiver2.application.getGUIManager());
+	    // Activate registered AIs
+	    AIRegistration.activateRegisteredAIs();
+	    // Set default title
+	    CommonDialogs.setDefaultTitle(DungeonDiver2.PROGRAM_NAME);
+	} catch (final Throwable t) {
+	    DungeonDiver2.getErrorLogger().logError(t);
+	}
     }
 
     private static class PreferencesLauncher implements PreferencesHandler {
-        @Override
-        public void handlePreferences(PreferencesEvent inE) {
-            PreferencesManager.showPrefs();
-        }
+	@Override
+	public void handlePreferences(PreferencesEvent inE) {
+	    PreferencesManager.showPrefs();
+	}
     }
 }

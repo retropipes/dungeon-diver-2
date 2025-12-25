@@ -15,8 +15,8 @@ import net.worldwizard.xio.XDataWriter;
 public abstract class GenericCharacter extends MapObject {
     // Constructors
     protected GenericCharacter() {
-        super(false);
-        this.setSavedObject(new Empty());
+	super(false);
+	this.setSavedObject(new Empty());
     }
 
     // Methods
@@ -25,45 +25,42 @@ public abstract class GenericCharacter extends MapObject {
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_CHARACTER);
+	this.type.set(TypeConstants.TYPE_CHARACTER);
     }
 
     @Override
     public int getCustomFormat() {
-        return MapObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+	return MapObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
-    protected void writeMapObjectHookX(final XDataWriter writer)
-            throws IOException {
-        this.getSavedObject().writeMapObjectX(writer);
+    protected void writeMapObjectHookX(final XDataWriter writer) throws IOException {
+	this.getSavedObject().writeMapObjectX(writer);
     }
 
     @Override
-    protected MapObject readMapObjectHookX(final XDataReader reader,
-            final int formatVersion) throws IOException {
-        this.setSavedObject(
-                new MapObjectList().readMapObjectX(reader, formatVersion));
-        return this;
+    protected MapObject readMapObjectHookX(final XDataReader reader, final int formatVersion) throws IOException {
+	this.setSavedObject(new MapObjectList().readMapObjectX(reader, formatVersion));
+	return this;
     }
 
     @Override
     public boolean enabledInBattle() {
-        return false;
+	return false;
     }
 }

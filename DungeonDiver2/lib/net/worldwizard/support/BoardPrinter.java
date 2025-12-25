@@ -33,40 +33,36 @@ import net.worldwizard.commondialogs.CommonDialogs;
  */
 public class BoardPrinter {
     private BoardPrinter() {
-        // Do nothing
+	// Do nothing
     }
 
     public static void printBoard(final JFrame j) {
-        try {
-            final Container c = j.getContentPane();
-            final Dimension d = c.getPreferredSize();
-            final BufferedImage bi = new BufferedImage(d.width, d.height,
-                    BufferedImage.TYPE_INT_ARGB);
-            c.paintComponents(bi.createGraphics());
-            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "PNG", baos);
-            final byte[] data = baos.toByteArray();
-            final ByteArrayInputStream bais = new ByteArrayInputStream(data);
-            final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
-            final DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
-            final PrinterJob pj = PrinterJob.getPrinterJob();
-            final boolean okay = pj.printDialog(pras);
-            if (okay) {
-                final PrintService service = pj.getPrintService();
-                final DocPrintJob job = service.createPrintJob();
-                final DocAttributeSet das = new HashDocAttributeSet();
-                final Doc doc = new SimpleDoc(bais, flavor, das);
-                job.print(doc, pras);
-            }
-        } catch (final IOException ioe) {
-            CommonDialogs.showErrorDialog("Printing failed!",
-                    "Print GameBoard");
-        } catch (final PrintException pe) {
-            CommonDialogs.showErrorDialog("Printing failed!",
-                    "Print GameBoard");
-        } catch (final NullPointerException npe) {
-            CommonDialogs.showErrorDialog("Printing failed!",
-                    "Print GameBoard");
-        }
+	try {
+	    final Container c = j.getContentPane();
+	    final Dimension d = c.getPreferredSize();
+	    final BufferedImage bi = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_ARGB);
+	    c.paintComponents(bi.createGraphics());
+	    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    ImageIO.write(bi, "PNG", baos);
+	    final byte[] data = baos.toByteArray();
+	    final ByteArrayInputStream bais = new ByteArrayInputStream(data);
+	    final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+	    final DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
+	    final PrinterJob pj = PrinterJob.getPrinterJob();
+	    final boolean okay = pj.printDialog(pras);
+	    if (okay) {
+		final PrintService service = pj.getPrintService();
+		final DocPrintJob job = service.createPrintJob();
+		final DocAttributeSet das = new HashDocAttributeSet();
+		final Doc doc = new SimpleDoc(bais, flavor, das);
+		job.print(doc, pras);
+	    }
+	} catch (final IOException ioe) {
+	    CommonDialogs.showErrorDialog("Printing failed!", "Print GameBoard");
+	} catch (final PrintException pe) {
+	    CommonDialogs.showErrorDialog("Printing failed!", "Print GameBoard");
+	} catch (final NullPointerException npe) {
+	    CommonDialogs.showErrorDialog("Printing failed!", "Print GameBoard");
+	}
     }
 }

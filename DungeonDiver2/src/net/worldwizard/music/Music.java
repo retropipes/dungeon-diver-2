@@ -26,82 +26,75 @@ public class Music {
     private boolean stop;
 
     public Music(final URL loc) {
-        this.url = loc;
-        this.stop = false;
+	this.url = loc;
+	this.stop = false;
     }
 
     public void playLoop() {
-        while (!this.stop) {
-            try {
-                // Get AudioInputStream from given file.
-                this.stream = AudioSystem.getAudioInputStream(this.url);
-                this.decodedStream = null;
-                if (this.stream != null) {
-                    this.format = this.stream.getFormat();
-                    this.decodedFormat = new AudioFormat(
-                            AudioFormat.Encoding.PCM_SIGNED,
-                            this.format.getSampleRate(), 16,
-                            this.format.getChannels(),
-                            this.format.getChannels() * 2,
-                            this.format.getSampleRate(), false);
-                    // Get AudioInputStream that will be decoded by underlying
-                    // VorbisSPI
-                    this.decodedStream = AudioSystem.getAudioInputStream(
-                            this.decodedFormat, this.stream);
-                }
-            } catch (Exception e) {
-                // Do nothing
-            }
-            DataLine.Info info = new DataLine.Info(SourceDataLine.class,
-                    this.decodedFormat);
-            try (Line res = AudioSystem.getLine(info);
-                    SourceDataLine line = (SourceDataLine) res) {
-                if (line != null) {
-                    line.open(this.decodedFormat);
-                    try {
-                        byte[] data = new byte[16];
-                        // Start
-                        line.start();
-                        while (!this.stop) {
-                            if (this.stop) {
-                                return;
-                            }
-                            int nBytesRead = 0;
-                            while (nBytesRead != -1 && !this.stop) {
-                                nBytesRead = this.decodedStream.read(data, 0,
-                                        data.length);
-                                if (this.stop) {
-                                    return;
-                                }
-                                if (nBytesRead != -1) {
-                                    line.write(data, 0, nBytesRead);
-                                }
-                                if (this.stop) {
-                                    return;
-                                }
-                            }
-                            if (this.stop) {
-                                return;
-                            }
-                            // Reset
-                            this.stream.reset();
-                        }
-                        // Stop
-                        line.stop();
-                    } catch (IOException io) {
-                        // Do nothing
-                    } finally {
-                        // Stop
-                        line.stop();
-                    }
-                }
-            } catch (LineUnavailableException lue) {
-                // Do nothing
-            }
-        }
+	while (!this.stop) {
+	    try {
+		// Get AudioInputStream from given file.
+		this.stream = AudioSystem.getAudioInputStream(this.url);
+		this.decodedStream = null;
+		if (this.stream != null) {
+		    this.format = this.stream.getFormat();
+		    this.decodedFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, this.format.getSampleRate(),
+			    16, this.format.getChannels(), this.format.getChannels() * 2, this.format.getSampleRate(),
+			    false);
+		    // Get AudioInputStream that will be decoded by underlying
+		    // VorbisSPI
+		    this.decodedStream = AudioSystem.getAudioInputStream(this.decodedFormat, this.stream);
+		}
+	    } catch (Exception e) {
+		// Do nothing
+	    }
+	    DataLine.Info info = new DataLine.Info(SourceDataLine.class, this.decodedFormat);
+	    try (Line res = AudioSystem.getLine(info); SourceDataLine line = (SourceDataLine) res) {
+		if (line != null) {
+		    line.open(this.decodedFormat);
+		    try {
+			byte[] data = new byte[16];
+			// Start
+			line.start();
+			while (!this.stop) {
+			    if (this.stop) {
+				return;
+			    }
+			    int nBytesRead = 0;
+			    while (nBytesRead != -1 && !this.stop) {
+				nBytesRead = this.decodedStream.read(data, 0, data.length);
+				if (this.stop) {
+				    return;
+				}
+				if (nBytesRead != -1) {
+				    line.write(data, 0, nBytesRead);
+				}
+				if (this.stop) {
+				    return;
+				}
+			    }
+			    if (this.stop) {
+				return;
+			    }
+			    // Reset
+			    this.stream.reset();
+			}
+			// Stop
+			line.stop();
+		    } catch (IOException io) {
+			// Do nothing
+		    } finally {
+			// Stop
+			line.stop();
+		    }
+		}
+	    } catch (LineUnavailableException lue) {
+		// Do nothing
+	    }
+	}
     }
 
     public void stopLoop() {
-        this.stop = true;
+	this.stop = true;
     }
 }

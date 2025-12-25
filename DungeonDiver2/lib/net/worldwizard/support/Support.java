@@ -13,14 +13,12 @@ public class Support {
     // Constants
     private static final String PROGRAM_NAME = "DungeonDiverII";
     private static final String ERROR_MESSAGE = "Perhaps a bug is to blame for this error message.\n"
-            + "Include the debug log with your bug report.\n"
-            + "Email bug reports to: products@puttysoftware.com\n"
-            + "Subject: DungeonDiverII Bug Report";
+	    + "Include the debug log with your bug report.\n" + "Email bug reports to: products@puttysoftware.com\n"
+	    + "Subject: DungeonDiverII Bug Report";
     private static final String SCRIPT_ERROR_MESSAGE = "A problem has occurred while running a script.\n"
-            + "This error is non-fatal, and has been logged.";
+	    + "This error is non-fatal, and has been logged.";
     private static final String ERROR_TITLE = "DungeonDiverII Error";
-    private static final ErrorLogger elog = new ErrorLogger(
-            Support.PROGRAM_NAME);
+    private static final ErrorLogger elog = new ErrorLogger(Support.PROGRAM_NAME);
     private static final int VERSION_MAJOR = 2;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
@@ -34,47 +32,43 @@ public class Support {
 
     // Methods
     public static ErrorLogger getErrorLogger() {
-        // Display error message
-        CommonDialogs.showErrorDialog(Support.ERROR_MESSAGE,
-                Support.ERROR_TITLE);
-        return Support.elog;
+	// Display error message
+	CommonDialogs.showErrorDialog(Support.ERROR_MESSAGE, Support.ERROR_TITLE);
+	return Support.elog;
     }
 
     public static ErrorLogger getNonFatalLogger() {
-        // Display error message
-        CommonDialogs.showErrorDialog(Support.SCRIPT_ERROR_MESSAGE,
-                Support.ERROR_TITLE);
-        return Support.elog;
+	// Display error message
+	CommonDialogs.showErrorDialog(Support.SCRIPT_ERROR_MESSAGE, Support.ERROR_TITLE);
+	return Support.elog;
     }
 
     public static Variables getVariables() {
-        return Support.scen;
+	return Support.scen;
     }
 
     public static Variables getSystemVariables() {
-        return Support.sysScen;
+	return Support.sysScen;
     }
 
     public static void createVariables() {
-        Support.scen = new Variables(false);
+	Support.scen = new Variables(false);
     }
 
     public static void createSystemVariables() {
-        Support.sysScen = new Variables(true);
+	Support.sysScen = new Variables(true);
     }
 
     public static String getVersionString() {
-        if (Support.isBetaModeEnabled()) {
-            return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR
-                    + "." + Support.VERSION_BUGFIX + "-dev"
-                    + Support.VERSION_BETA;
-        } else {
-            return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR
-                    + "." + Support.VERSION_BUGFIX;
-        }
+	if (Support.isBetaModeEnabled()) {
+	    return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR + "." + Support.VERSION_BUGFIX + "-dev"
+		    + Support.VERSION_BETA;
+	} else {
+	    return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR + "." + Support.VERSION_BUGFIX;
+	}
     }
 
     public static boolean isBetaModeEnabled() {
-        return Support.VERSION_BETA > 0;
+	return Support.VERSION_BETA > 0;
     }
 }

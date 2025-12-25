@@ -14,30 +14,28 @@ public class FaithDataManager {
     private static final double DIVIDE_FACTOR = 4.0;
 
     public static double[] getFaithData(final int f) {
-        final String name = FaithConstants.getFaithNames()[f].toLowerCase();
-        try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                FaithDataManager.class.getResourceAsStream(
-                        "/net/worldwizard/support/resources/data/faith/" + name
-                                + ".dat"))) {
-            // Fetch data
-            final int[] rawData = new int[FaithConstants.getFaithsCount()];
-            for (int x = 0; x < rawData.length; x++) {
-                try {
-                    rawData[x] = rsr.readInt();
-                } catch (final NumberFormatException nfe) {
-                    rawData[x] = -FaithDataManager.ADD_FACTOR;
-                }
-            }
-            // Parse raw data
-            final double[] finalData = new double[rawData.length];
-            for (int x = 0; x < rawData.length; x++) {
-                final int i = rawData[x] + FaithDataManager.ADD_FACTOR;
-                final double d = i / FaithDataManager.DIVIDE_FACTOR;
-                finalData[x] = d;
-            }
-            return finalData;
-        } catch (final Exception e) {
-            return null;
-        }
+	final String name = FaithConstants.getFaithNames()[f].toLowerCase();
+	try (final ResourceStreamReader rsr = new ResourceStreamReader(FaithDataManager.class
+		.getResourceAsStream("/net/worldwizard/support/resources/data/faith/" + name + ".dat"))) {
+	    // Fetch data
+	    final int[] rawData = new int[FaithConstants.getFaithsCount()];
+	    for (int x = 0; x < rawData.length; x++) {
+		try {
+		    rawData[x] = rsr.readInt();
+		} catch (final NumberFormatException nfe) {
+		    rawData[x] = -FaithDataManager.ADD_FACTOR;
+		}
+	    }
+	    // Parse raw data
+	    final double[] finalData = new double[rawData.length];
+	    for (int x = 0; x < rawData.length; x++) {
+		final int i = rawData[x] + FaithDataManager.ADD_FACTOR;
+		final double d = i / FaithDataManager.DIVIDE_FACTOR;
+		finalData[x] = d;
+	    }
+	    return finalData;
+	} catch (final Exception e) {
+	    return null;
+	}
     }
 }

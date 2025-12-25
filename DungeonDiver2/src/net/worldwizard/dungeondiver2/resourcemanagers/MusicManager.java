@@ -19,47 +19,46 @@ public class MusicManager {
     private static MusicTask task;
 
     private static Music getMusic(final String filename) {
-        try {
-            final URL url = MusicManager.LOAD_CLASS.getResource(
-                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
-            final Music music = new Music(url);
-            return music;
-        } catch (final NullPointerException np) {
-            return null;
-        }
+	try {
+	    final URL url = MusicManager.LOAD_CLASS
+		    .getResource(MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
+	    final Music music = new Music(url);
+	    return music;
+	} catch (final NullPointerException np) {
+	    return null;
+	}
     }
 
     public static void playMusic(final int musicID) {
-        MusicManager.CURRENT_MUSIC = MusicManager
-                .getMusic(MusicConstants.MUSIC_NAMES[musicID]);
-        if (MusicManager.CURRENT_MUSIC != null) {
-            // Play the music
-            MusicManager.task = new MusicTask(MusicManager.CURRENT_MUSIC);
-            MusicManager.task.start();
-        }
+	MusicManager.CURRENT_MUSIC = MusicManager.getMusic(MusicConstants.MUSIC_NAMES[musicID]);
+	if (MusicManager.CURRENT_MUSIC != null) {
+	    // Play the music
+	    MusicManager.task = new MusicTask(MusicManager.CURRENT_MUSIC);
+	    MusicManager.task.start();
+	}
     }
 
     public static void stopMusic() {
-        if (MusicManager.CURRENT_MUSIC != null) {
-            // Stop the music
-            try {
-                MusicManager.CURRENT_MUSIC.stopLoop();
-            } catch (final BufferUnderflowException bue) {
-                // Ignore
-            } catch (final NullPointerException np) {
-                // Ignore
-            } catch (final Throwable t) {
-                DungeonDiver2.getErrorLogger().logError(t);
-            }
-        }
+	if (MusicManager.CURRENT_MUSIC != null) {
+	    // Stop the music
+	    try {
+		MusicManager.CURRENT_MUSIC.stopLoop();
+	    } catch (final BufferUnderflowException bue) {
+		// Ignore
+	    } catch (final NullPointerException np) {
+		// Ignore
+	    } catch (final Throwable t) {
+		DungeonDiver2.getErrorLogger().logError(t);
+	    }
+	}
     }
 
     public static boolean isMusicPlaying() {
-        if (MusicManager.task != null) {
-            if (MusicManager.task.isAlive()) {
-                return true;
-            }
-        }
-        return false;
+	if (MusicManager.task != null) {
+	    if (MusicManager.task.isAlive()) {
+		return true;
+	    }
+	}
+	return false;
     }
 }

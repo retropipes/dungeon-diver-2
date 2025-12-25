@@ -10,7 +10,7 @@ import net.worldwizard.support.map.MapConstants;
 public abstract class GenericPassThroughObject extends MapObject {
     // Constructors
     protected GenericPassThroughObject() {
-        super(false);
+	super(false);
     }
 
     @Override
@@ -18,21 +18,21 @@ public abstract class GenericPassThroughObject extends MapObject {
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PASS_THROUGH);
+	this.type.set(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

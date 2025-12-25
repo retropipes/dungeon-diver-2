@@ -10,7 +10,7 @@ import net.worldwizard.support.map.MapConstants;
 public abstract class GenericWall extends MapObject {
     // Constructors
     protected GenericWall() {
-        super(true);
+	super(true);
     }
 
     @Override
@@ -18,26 +18,26 @@ public abstract class GenericWall extends MapObject {
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_WALL);
+	this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public boolean enabledInBattle() {
-        return false;
+	return false;
     }
 }

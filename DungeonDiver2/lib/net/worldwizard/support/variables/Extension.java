@@ -25,110 +25,110 @@ public class Extension {
 
     // Methods
     public static String getPreferencesExtension() {
-        return Extension.PREFERENCES_EXTENSION;
+	return Extension.PREFERENCES_EXTENSION;
     }
 
     public static String getRegistryExtensionWithPeriod() {
-        return "." + Extension.REGISTRY_EXTENSION;
+	return "." + Extension.REGISTRY_EXTENSION;
     }
 
     public static String getVariablesExtension() {
-        return Extension.VARIABLES_EXTENSION;
+	return Extension.VARIABLES_EXTENSION;
     }
 
     public static String getVariablesExtensionWithPeriod() {
-        return "." + Extension.VARIABLES_EXTENSION;
+	return "." + Extension.VARIABLES_EXTENSION;
     }
 
     public static String getGameExtension() {
-        return Extension.SAVED_GAME_EXTENSION;
+	return Extension.SAVED_GAME_EXTENSION;
     }
 
     public static String getGameExtensionWithPeriod() {
-        return "." + Extension.SAVED_GAME_EXTENSION;
+	return "." + Extension.SAVED_GAME_EXTENSION;
     }
 
     public static String getScoresExtensionWithPeriod() {
-        return "." + Extension.SCORES_EXTENSION;
+	return "." + Extension.SCORES_EXTENSION;
     }
 
     public static String getCharacterExtension() {
-        return Extension.CHARACTER_EXTENSION;
+	return Extension.CHARACTER_EXTENSION;
     }
 
     public static String getCharacterExtensionWithPeriod() {
-        return "." + Extension.CHARACTER_EXTENSION;
+	return "." + Extension.CHARACTER_EXTENSION;
     }
 
     public static String getMonsterExtension() {
-        return Extension.MONSTER_EXTENSION;
+	return Extension.MONSTER_EXTENSION;
     }
 
     public static String getMonsterExtensionWithPeriod() {
-        return "." + Extension.MONSTER_EXTENSION;
+	return "." + Extension.MONSTER_EXTENSION;
     }
 
     public static String getEffectExtension() {
-        return Extension.EFFECT_EXTENSION;
+	return Extension.EFFECT_EXTENSION;
     }
 
     public static String getEffectExtensionWithPeriod() {
-        return "." + Extension.EFFECT_EXTENSION;
+	return "." + Extension.EFFECT_EXTENSION;
     }
 
     public static String getSpellExtension() {
-        return Extension.SPELL_EXTENSION;
+	return Extension.SPELL_EXTENSION;
     }
 
     public static String getSpellExtensionWithPeriod() {
-        return "." + Extension.SPELL_EXTENSION;
+	return "." + Extension.SPELL_EXTENSION;
     }
 
     public static String getSpellBookExtension() {
-        return Extension.SPELL_BOOK_EXTENSION;
+	return Extension.SPELL_BOOK_EXTENSION;
     }
 
     public static String getSpellBookExtensionWithPeriod() {
-        return "." + Extension.SPELL_BOOK_EXTENSION;
+	return "." + Extension.SPELL_BOOK_EXTENSION;
     }
 
     public static String getBattleExtension() {
-        return Extension.BATTLE_EXTENSION;
+	return Extension.BATTLE_EXTENSION;
     }
 
     public static String getBattleExtensionWithPeriod() {
-        return "." + Extension.BATTLE_EXTENSION;
+	return "." + Extension.BATTLE_EXTENSION;
     }
 
     public static String getItemExtension() {
-        return Extension.ITEM_EXTENSION;
+	return Extension.ITEM_EXTENSION;
     }
 
     public static String getItemExtensionWithPeriod() {
-        return "." + Extension.ITEM_EXTENSION;
+	return "." + Extension.ITEM_EXTENSION;
     }
 
     public static String getAIScriptExtension() {
-        return Extension.AI_SCRIPT_EXTENSION;
+	return Extension.AI_SCRIPT_EXTENSION;
     }
 
     public static String getAIScriptExtensionWithPeriod() {
-        return "." + Extension.AI_SCRIPT_EXTENSION;
+	return "." + Extension.AI_SCRIPT_EXTENSION;
     }
 
     public static String getRaceExtension() {
-        return Extension.RACE_EXTENSION;
+	return Extension.RACE_EXTENSION;
     }
 
     public static String getRaceExtensionWithPeriod() {
-        return "." + Extension.RACE_EXTENSION;
+	return "." + Extension.RACE_EXTENSION;
     }
 
     public static String getCasteExtension() {
-        return Extension.CASTE_EXTENSION;
+	return Extension.CASTE_EXTENSION;
     }
 
     public static String getCasteExtensionWithPeriod() {
-        return "." + Extension.CASTE_EXTENSION;
+	return "." + Extension.CASTE_EXTENSION;
     }
 }

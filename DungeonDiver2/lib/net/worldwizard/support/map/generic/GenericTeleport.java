@@ -19,35 +19,34 @@ public abstract class GenericTeleport extends MapObject {
 
     // Constructors
     protected GenericTeleport() {
-        super(false);
-        this.setTemplateTransform(new TemplateTransform(0.25, 0.5, 1.0, ""));
+	super(false);
+	this.setTemplateTransform(new TemplateTransform(0.25, 0.5, 1.0, ""));
     }
 
     // Scriptability
     @Override
-    public GameScript getPostMoveScript(final boolean ie, final int dirX,
-            final int dirY, final int dirZ, final Map map) {
-        final RandomRange row = new RandomRange(0, map.getRows() - 1);
-        final RandomRange col = new RandomRange(0, map.getColumns() - 1);
-        // Create post-move script
-        this.postMove = new GameScript();
-        final GameScriptEntry act0 = new GameScriptEntry();
-        act0.setActionCode(GameActionCode.MOVE);
-        act0.addActionArg(new GameScriptEntryArgument(true));
-        act0.addActionArg(new GameScriptEntryArgument(false));
-        act0.addActionArg(new GameScriptEntryArgument(row.generate()));
-        act0.addActionArg(new GameScriptEntryArgument(col.generate()));
-        act0.addActionArg(new GameScriptEntryArgument(dirZ));
-        act0.finalizeActionArgs();
-        this.postMove.addAction(act0);
-        final GameScriptEntry act1 = new GameScriptEntry();
-        act1.setActionCode(GameActionCode.SOUND);
-        act1.addActionArg(
-                new GameScriptEntryArgument(GameSounds.TELEPORT));
-        act1.finalizeActionArgs();
-        this.postMove.addAction(act1);
-        this.postMove.finalizeActions();
-        return this.postMove;
+    public GameScript getPostMoveScript(final boolean ie, final int dirX, final int dirY, final int dirZ,
+	    final Map map) {
+	final RandomRange row = new RandomRange(0, map.getRows() - 1);
+	final RandomRange col = new RandomRange(0, map.getColumns() - 1);
+	// Create post-move script
+	this.postMove = new GameScript();
+	final GameScriptEntry act0 = new GameScriptEntry();
+	act0.setActionCode(GameActionCode.MOVE);
+	act0.addActionArg(new GameScriptEntryArgument(true));
+	act0.addActionArg(new GameScriptEntryArgument(false));
+	act0.addActionArg(new GameScriptEntryArgument(row.generate()));
+	act0.addActionArg(new GameScriptEntryArgument(col.generate()));
+	act0.addActionArg(new GameScriptEntryArgument(dirZ));
+	act0.finalizeActionArgs();
+	this.postMove.addAction(act0);
+	final GameScriptEntry act1 = new GameScriptEntry();
+	act1.setActionCode(GameActionCode.SOUND);
+	act1.addActionArg(new GameScriptEntryArgument(GameSounds.TELEPORT));
+	act1.finalizeActionArgs();
+	this.postMove.addAction(act1);
+	this.postMove.finalizeActions();
+	return this.postMove;
     }
 
     @Override
@@ -55,31 +54,31 @@ public abstract class GenericTeleport extends MapObject {
 
     @Override
     public int getLayer() {
-        return MapConstants.LAYER_OBJECT;
+	return MapConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TELEPORT);
+	this.type.set(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override
     public boolean defersSetProperties() {
-        return true;
+	return true;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MapObject.DEFAULT_CUSTOM_VALUE;
+	return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public boolean enabledInBattle() {
-        return false;
+	return false;
     }
 }

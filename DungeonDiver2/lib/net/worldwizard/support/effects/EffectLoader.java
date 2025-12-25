@@ -15,27 +15,25 @@ import net.worldwizard.xio.XDataReader;
 public class EffectLoader {
     // Constructors
     private EffectLoader() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static Effect loadEffect(final String file) {
-        if (file.startsWith("$")) {
-            return SystemLoader.loadEffect(file);
-        } else {
-            try {
-                final XDataReader effectFile = new XDataReader(
-                        Support.getVariables().getBasePath() + File.separator
-                                + "effects" + File.separator + file
-                                + Extension.getEffectExtensionWithPeriod(),
-                        Extension.getEffectExtension());
-                final Effect e = Effect.read(effectFile);
-                effectFile.close();
-                return e;
-            } catch (final Exception ex) {
-                Support.getErrorLogger().logError(ex);
-                return null;
-            }
-        }
+	if (file.startsWith("$")) {
+	    return SystemLoader.loadEffect(file);
+	} else {
+	    try {
+		final XDataReader effectFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+			+ "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
+			Extension.getEffectExtension());
+		final Effect e = Effect.read(effectFile);
+		effectFile.close();
+		return e;
+	    } catch (final Exception ex) {
+		Support.getErrorLogger().logError(ex);
+		return null;
+	    }
+	}
     }
 }

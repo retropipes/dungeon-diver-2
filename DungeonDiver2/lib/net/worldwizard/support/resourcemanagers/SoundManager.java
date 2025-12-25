@@ -16,41 +16,37 @@ public class SoundManager {
     private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = SoundManager.class;
 
-    private static Sound getSound(final String categoryName,
-            final String filename) {
-        try {
-            String sfile;
-            if (filename.equalsIgnoreCase("walk")) {
-                final RandomRange r = new RandomRange(1, 2);
-                sfile = filename + Integer.toString(r.generate());
-            } else {
-                sfile = filename;
-            }
-            final URL url = SoundManager.LOAD_CLASS
-                    .getResource(SoundManager.LOAD_PATH + categoryName + "/"
-                            + sfile.toLowerCase() + ".wav");
-            final Sound snd = new Sound(url);
-            return snd;
-        } catch (final NullPointerException np) {
-            return null;
-        }
+    private static Sound getSound(final String categoryName, final String filename) {
+	try {
+	    String sfile;
+	    if (filename.equalsIgnoreCase("walk")) {
+		final RandomRange r = new RandomRange(1, 2);
+		sfile = filename + Integer.toString(r.generate());
+	    } else {
+		sfile = filename;
+	    }
+	    final URL url = SoundManager.LOAD_CLASS
+		    .getResource(SoundManager.LOAD_PATH + categoryName + "/" + sfile.toLowerCase() + ".wav");
+	    final Sound snd = new Sound(url);
+	    return snd;
+	} catch (final NullPointerException np) {
+	    return null;
+	}
     }
 
     public static void playSound(final GameSounds soundID) {
-        if (soundID != GameSounds._NONE) {
-            try {
-                final String categoryName = SoundNames.SOUND_CATEGORY_NAMES[SoundNames
-                        .getCategoryIndexFromSoundIndex(soundID.ordinal())];
-                final String soundName = SoundNames.SOUND_NAMES[soundID
-                        .ordinal()];
-                final Sound snd = SoundManager.getSound(categoryName,
-                        soundName);
-                if (snd != null) {
-                    new SoundTask(snd).start();
-                }
-            } catch (final ArrayIndexOutOfBoundsException aioob) {
-                // Do nothing
-            }
-        }
+	if (soundID != GameSounds._NONE) {
+	    try {
+		final String categoryName = SoundNames.SOUND_CATEGORY_NAMES[SoundNames
+			.getCategoryIndexFromSoundIndex(soundID.ordinal())];
+		final String soundName = SoundNames.SOUND_NAMES[soundID.ordinal()];
+		final Sound snd = SoundManager.getSound(categoryName, soundName);
+		if (snd != null) {
+		    new SoundTask(snd).start();
+		}
+	    } catch (final ArrayIndexOutOfBoundsException aioob) {
+		// Do nothing
+	    }
+	}
     }
 }

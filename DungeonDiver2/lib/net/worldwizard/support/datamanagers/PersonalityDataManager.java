@@ -11,24 +11,21 @@ import net.worldwizard.xio.ResourceStreamReader;
 
 public class PersonalityDataManager {
     public static int[] getPersonalityData(final int p) {
-        final String name = PersonalityConstants.PERSONALITY_NAMES[p]
-                .toLowerCase();
-        try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                PersonalityDataManager.class.getResourceAsStream(
-                        "/net/worldwizard/support/resources/data/personality/"
-                                + name + ".dat"))) {
-            // Fetch data
-            final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTE_COUNT];
-            for (int x = 0; x < rawData.length; x++) {
-                try {
-                    rawData[x] = rsr.readInt();
-                } catch (final NumberFormatException nfe) {
-                    rawData[x] = 0;
-                }
-            }
-            return rawData;
-        } catch (final Exception e) {
-            return null;
-        }
+	final String name = PersonalityConstants.PERSONALITY_NAMES[p].toLowerCase();
+	try (final ResourceStreamReader rsr = new ResourceStreamReader(PersonalityDataManager.class
+		.getResourceAsStream("/net/worldwizard/support/resources/data/personality/" + name + ".dat"))) {
+	    // Fetch data
+	    final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTE_COUNT];
+	    for (int x = 0; x < rawData.length; x++) {
+		try {
+		    rawData[x] = rsr.readInt();
+		} catch (final NumberFormatException nfe) {
+		    rawData[x] = 0;
+		}
+	    }
+	    return rawData;
+	} catch (final Exception e) {
+	    return null;
+	}
     }
 }

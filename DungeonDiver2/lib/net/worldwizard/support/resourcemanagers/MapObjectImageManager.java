@@ -18,39 +18,35 @@ public class MapObjectImageManager {
     private static String LOAD_PATH = MapObjectImageManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = MapObjectImageManager.class;
 
-    public static BufferedImageIcon getImage(final String name,
-            final String rawName, final TemplateTransform tt) {
-        return MapObjectImageCache.getCachedImage(name, rawName, tt);
+    public static BufferedImageIcon getImage(final String name, final String rawName, final TemplateTransform tt) {
+	return MapObjectImageCache.getCachedImage(name, rawName, tt);
     }
 
-    static BufferedImageIcon getUncachedImage(final String name,
-            final TemplateTransform tt) {
-        final String normalName = MapObjectImageManager.normalizeName(name);
-        try {
-            final URL url = MapObjectImageManager.LOAD_CLASS.getResource(
-                    MapObjectImageManager.LOAD_PATH + normalName + ".png");
-            final BufferedImage image = ImageIO.read(url);
-            final BufferedImageIcon icon = new BufferedImageIcon(image);
-            final BufferedImageIcon res = ImageTransformer
-                    .getTemplateTransformedImage(icon, tt);
-            return res;
-        } catch (final Exception e) {
-            return null;
-        }
+    static BufferedImageIcon getUncachedImage(final String name, final TemplateTransform tt) {
+	final String normalName = MapObjectImageManager.normalizeName(name);
+	try {
+	    final URL url = MapObjectImageManager.LOAD_CLASS
+		    .getResource(MapObjectImageManager.LOAD_PATH + normalName + ".png");
+	    final BufferedImage image = ImageIO.read(url);
+	    final BufferedImageIcon icon = new BufferedImageIcon(image);
+	    final BufferedImageIcon res = ImageTransformer.getTemplateTransformedImage(icon, tt);
+	    return res;
+	} catch (final Exception e) {
+	    return null;
+	}
     }
 
     private static String normalizeName(final String name) {
-        final StringBuilder sb = new StringBuilder(name);
-        for (int x = 0; x < sb.length(); x++) {
-            if (!Character.isLetter(sb.charAt(x))
-                    && !Character.isDigit(sb.charAt(x))) {
-                sb.setCharAt(x, '_');
-            }
-        }
-        return sb.toString().toLowerCase();
+	final StringBuilder sb = new StringBuilder(name);
+	for (int x = 0; x < sb.length(); x++) {
+	    if (!Character.isLetter(sb.charAt(x)) && !Character.isDigit(sb.charAt(x))) {
+		sb.setCharAt(x, '_');
+	    }
+	}
+	return sb.toString().toLowerCase();
     }
 
     public static int getGraphicSize() {
-        return 32;
+	return 32;
     }
 }

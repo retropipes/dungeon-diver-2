@@ -13,49 +13,49 @@ public class ScoreTable {
 
     // Constructors
     public ScoreTable() {
-        this.table = new Score[10];
-        int x;
-        for (x = 0; x < 10; x++) {
-            this.table[x] = new Score();
-        }
-        this.unit = ScoreTable.DEFAULT_UNIT;
+	this.table = new Score[10];
+	int x;
+	for (x = 0; x < 10; x++) {
+	    this.table[x] = new Score();
+	}
+	this.unit = ScoreTable.DEFAULT_UNIT;
     }
 
     public ScoreTable(final int length, final String customUnit) {
-        this.table = new Score[length];
-        int x;
-        for (x = 0; x < length; x++) {
-            this.table[x] = new Score();
-        }
-        if (customUnit == null || customUnit.equals("")) {
-            this.unit = ScoreTable.DEFAULT_UNIT;
-        } else {
-            this.unit = " " + customUnit;
-        }
+	this.table = new Score[length];
+	int x;
+	for (x = 0; x < length; x++) {
+	    this.table[x] = new Score();
+	}
+	if (customUnit == null || customUnit.equals("")) {
+	    this.unit = ScoreTable.DEFAULT_UNIT;
+	} else {
+	    this.unit = " " + customUnit;
+	}
     }
 
     // Methods
     public long getEntryScore(final int pos) {
-        return this.table[pos].getScore();
+	return this.table[pos].getScore();
     }
 
     public String getEntryName(final int pos) {
-        return this.table[pos].getName();
+	return this.table[pos].getName();
     }
 
     public int getLength() {
-        return this.table.length;
+	return this.table.length;
     }
 
     public String getUnit() {
-        return this.unit;
+	return this.unit;
     }
 
     public void setEntryScore(final int pos, final long newScore) {
-        this.table[pos].setScore(newScore);
+	this.table[pos].setScore(newScore);
     }
 
     public void setEntryName(final int pos, final String newName) {
-        this.table[pos].setName(newName);
+	this.table[pos].setName(newName);
     }
 }

@@ -37,6 +37,6 @@ public final class AIScriptConstants {
 
     // Private Constructor
     private AIScriptConstants() {
-        // Do nothing
+	// Do nothing
     }
 }

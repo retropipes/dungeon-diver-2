@@ -15,9 +15,9 @@ public class RandomRange {
      * @param max
      */
     public RandomRange(final long min, final long max) {
-        this.generator = new Random();
-        this.minimum = min;
-        this.maximum = max;
+	this.generator = new Random();
+	this.minimum = min;
+	this.maximum = max;
     }
 
     // Methods
@@ -26,7 +26,7 @@ public class RandomRange {
      * @return the random number generated
      */
     public int generate() {
-        return (int) this.generateLong();
+	return (int) this.generateLong();
     }
 
     /**
@@ -34,12 +34,10 @@ public class RandomRange {
      * @return the random number generated
      */
     public long generateLong() {
-        return Math.abs(
-                this.generator.nextLong() % (this.maximum - this.minimum + 1))
-                + this.minimum;
+	return Math.abs(this.generator.nextLong() % (this.maximum - this.minimum + 1)) + this.minimum;
     }
 
     public long generateRawLong() {
-        return this.generator.nextLong();
+	return this.generator.nextLong();
     }
 }

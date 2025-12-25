@@ -16,51 +16,49 @@ import net.worldwizard.support.scripts.game.GameScriptEntryArgument;
 public class Lava extends GenericField {
     // Constructors
     public Lava() {
-        super(5);
-        this.setTemplateTransform(new TemplateTransform(1.0, 0.5, 0.25, ""));
+	super(5);
+	this.setTemplateTransform(new TemplateTransform(1.0, 0.5, 0.25, ""));
     }
 
     @Override
     protected GameScript playSoundHook() {
-        final GameScript scpt = new GameScript();
-        final GameScriptEntry entry0 = new GameScriptEntry();
-        entry0.setActionCode(GameActionCode.SOUND);
-        entry0.addActionArg(
-                new GameScriptEntryArgument(GameSounds.SHORT_OW));
-        entry0.finalizeActionArgs();
-        scpt.addAction(entry0);
-        final GameScriptEntry entry1 = new GameScriptEntry();
-        entry1.setActionCode(GameActionCode.MESSAGE);
-        entry1.addActionArg(
-                new GameScriptEntryArgument("Ow, the lava burned you!"));
-        entry1.finalizeActionArgs();
-        scpt.addAction(entry1);
-        scpt.finalizeActions();
-        return scpt;
+	final GameScript scpt = new GameScript();
+	final GameScriptEntry entry0 = new GameScriptEntry();
+	entry0.setActionCode(GameActionCode.SOUND);
+	entry0.addActionArg(new GameScriptEntryArgument(GameSounds.SHORT_OW));
+	entry0.finalizeActionArgs();
+	scpt.addAction(entry0);
+	final GameScriptEntry entry1 = new GameScriptEntry();
+	entry1.setActionCode(GameActionCode.MESSAGE);
+	entry1.addActionArg(new GameScriptEntryArgument("Ow, the lava burned you!"));
+	entry1.finalizeActionArgs();
+	scpt.addAction(entry1);
+	scpt.finalizeActions();
+	return scpt;
     }
 
     @Override
     public String getName() {
-        return "Lava";
+	return "Lava";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Lava";
+	return "Squares of Lava";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Lava will burn you if you walk on it.";
+	return "Lava will burn you if you walk on it.";
     }
 
     @Override
     public String getGameImageNameHook() {
-        return "textured";
+	return "textured";
     }
 }

@@ -9,6 +9,5 @@ public interface ShopTypes {
     int SHOP_TYPE_SPELLS = 6;
     int SHOP_TYPE_ITEMS = 7;
     int SHOP_TYPE_SOCKS = 8;
-    String[] SHOP_NAMES = { "Weapons", "Armor", "Healer", "Bank", "Regenerator",
-            "Spells", "Items", "Socks" };
+    String[] SHOP_NAMES = { "Weapons", "Armor", "Healer", "Bank", "Regenerator", "Spells", "Items", "Socks" };
 }

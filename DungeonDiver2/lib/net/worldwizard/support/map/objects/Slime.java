@@ -16,51 +16,49 @@ import net.worldwizard.support.scripts.game.GameScriptEntryArgument;
 public class Slime extends GenericField {
     // Constructors
     public Slime() {
-        super(5);
-        this.setTemplateTransform(new TemplateTransform(0.25, 1.0, 0.25, ""));
+	super(5);
+	this.setTemplateTransform(new TemplateTransform(0.25, 1.0, 0.25, ""));
     }
 
     @Override
     protected GameScript playSoundHook() {
-        final GameScript scpt = new GameScript();
-        final GameScriptEntry entry0 = new GameScriptEntry();
-        entry0.setActionCode(GameActionCode.SOUND);
-        entry0.addActionArg(
-                new GameScriptEntryArgument(GameSounds.SLIMED));
-        entry0.finalizeActionArgs();
-        scpt.addAction(entry0);
-        final GameScriptEntry entry1 = new GameScriptEntry();
-        entry1.setActionCode(GameActionCode.MESSAGE);
-        entry1.addActionArg(new GameScriptEntryArgument(
-                "Ow, the slime ate into your flesh!"));
-        entry1.finalizeActionArgs();
-        scpt.addAction(entry1);
-        scpt.finalizeActions();
-        return scpt;
+	final GameScript scpt = new GameScript();
+	final GameScriptEntry entry0 = new GameScriptEntry();
+	entry0.setActionCode(GameActionCode.SOUND);
+	entry0.addActionArg(new GameScriptEntryArgument(GameSounds.SLIMED));
+	entry0.finalizeActionArgs();
+	scpt.addAction(entry0);
+	final GameScriptEntry entry1 = new GameScriptEntry();
+	entry1.setActionCode(GameActionCode.MESSAGE);
+	entry1.addActionArg(new GameScriptEntryArgument("Ow, the slime ate into your flesh!"));
+	entry1.finalizeActionArgs();
+	scpt.addAction(entry1);
+	scpt.finalizeActions();
+	return scpt;
     }
 
     @Override
     public String getName() {
-        return "Slime";
+	return "Slime";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Slime";
+	return "Squares of Slime";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
+	return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 
     @Override
     public String getGameImageNameHook() {
-        return "textured";
+	return "textured";
     }
 }

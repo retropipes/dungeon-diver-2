@@ -34,55 +34,52 @@ public class HelpManager {
 
     // Constructors
     public HelpManager() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public void showHelp() {
-        this.initHelp();
-        this.helpFrame.setVisible(true);
+	this.initHelp();
+	this.helpFrame.setVisible(true);
     }
 
     private void initHelp() {
-        if (!this.inited) {
-            this.buttonHandler = new ButtonHandler();
-            this.objectList = DungeonDiver2.getApplication().getObjects();
-            this.objectNames = this.objectList.getAllDescriptions();
-            this.objectAppearances = this.objectList.getAllAppearances();
-            this.hv = new GraphicalHelpViewer(this.objectAppearances,
-                    this.objectNames, new Color(223, 223, 223));
-            this.export = new JButton("Export");
-            this.export.addActionListener(this.buttonHandler);
-            this.helpFrame = new JFrame("DungeonDiverII Help");
-            final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
-            this.helpFrame.setIconImage(iconlogo);
-            this.helpFrame
-                    .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-            this.helpFrame.setLayout(new BorderLayout());
-            this.helpFrame.add(this.hv.getHelp(), BorderLayout.CENTER);
-            this.helpFrame.add(this.export, BorderLayout.SOUTH);
-            this.hv.setHelpSize(GraphicsConstants.MAX_WINDOW_SIZE,
-                    GraphicsConstants.MAX_WINDOW_SIZE);
-            this.helpFrame.pack();
-            this.helpFrame.setResizable(false);
-            // Mac OS X-specific fixes
-            if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                this.menu = new MenuManager();
-                this.menu.setHelpMenus();
-                this.helpFrame.setJMenuBar(this.menu.getMainMenuBar());
-            }
-            this.inited = true;
-        }
+	if (!this.inited) {
+	    this.buttonHandler = new ButtonHandler();
+	    this.objectList = DungeonDiver2.getApplication().getObjects();
+	    this.objectNames = this.objectList.getAllDescriptions();
+	    this.objectAppearances = this.objectList.getAllAppearances();
+	    this.hv = new GraphicalHelpViewer(this.objectAppearances, this.objectNames, new Color(223, 223, 223));
+	    this.export = new JButton("Export");
+	    this.export.addActionListener(this.buttonHandler);
+	    this.helpFrame = new JFrame("DungeonDiverII Help");
+	    final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
+	    this.helpFrame.setIconImage(iconlogo);
+	    this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+	    this.helpFrame.setLayout(new BorderLayout());
+	    this.helpFrame.add(this.hv.getHelp(), BorderLayout.CENTER);
+	    this.helpFrame.add(this.export, BorderLayout.SOUTH);
+	    this.hv.setHelpSize(GraphicsConstants.MAX_WINDOW_SIZE, GraphicsConstants.MAX_WINDOW_SIZE);
+	    this.helpFrame.pack();
+	    this.helpFrame.setResizable(false);
+	    // Mac OS X-specific fixes
+	    if (System.getProperty("os.name").startsWith("Mac OS X")) {
+		this.menu = new MenuManager();
+		this.menu.setHelpMenus();
+		this.helpFrame.setJMenuBar(this.menu.getMainMenuBar());
+	    }
+	    this.inited = true;
+	}
     }
 
     private class ButtonHandler implements ActionListener {
-        public ButtonHandler() {
-            // TODO Auto-generated constructor stub
-        }
+	public ButtonHandler() {
+	    // TODO Auto-generated constructor stub
+	}
 
-        @Override
-        public void actionPerformed(final ActionEvent e) {
-            HelpManager.this.hv.exportHelp();
-        }
+	@Override
+	public void actionPerformed(final ActionEvent e) {
+	    HelpManager.this.hv.exportHelp();
+	}
     }
 }

@@ -9,13 +9,12 @@ import net.worldwizard.xio.XDataWriter;
 
 public class SuffixHandler implements SuffixIO {
     @Override
-    public void readSuffix(final XDataReader reader, final int formatVersion)
-            throws IOException {
-        DungeonDiver2.getApplication().getGameManager().loadGameHookX(reader);
+    public void readSuffix(final XDataReader reader, final int formatVersion) throws IOException {
+	DungeonDiver2.getApplication().getGameManager().loadGameHookX(reader);
     }
 
     @Override
     public void writeSuffix(final XDataWriter writer) throws IOException {
-        DungeonDiver2.getApplication().getGameManager().saveGameHookX(writer);
+	DungeonDiver2.getApplication().getGameManager().saveGameHookX(writer);
     }
 }

@@ -10,6 +10,6 @@ public class MusicConstants {
 
     // Private constructor
     private MusicConstants() {
-        // Do nothing
+	// Do nothing
     }
 }

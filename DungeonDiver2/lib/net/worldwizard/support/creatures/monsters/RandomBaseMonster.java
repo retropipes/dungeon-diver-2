@@ -9,31 +9,30 @@ import net.worldwizard.support.resourcemanagers.MonsterNames;
 public abstract class RandomBaseMonster extends BaseMonster {
     // Constructors
     RandomBaseMonster() {
-        super();
-        this.image = this.getInitialImage();
+	super();
+	this.image = this.getInitialImage();
     }
 
     @Override
     public boolean random() {
-        return true;
+	return true;
     }
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-        if (this.getLevel() == 0) {
-            return null;
-        } else {
-            final String[] types = MonsterNames.getAllNames();
-            final RandomRange r = new RandomRange(0, types.length - 1);
-            this.setType(types[r.generate()]);
-            this.setElement(new Element(FaithManager.getRandomFaith()));
-            return MonsterImageManager.getMonsterImage(this.getType(),
-                    this.getElement());
-        }
+	if (this.getLevel() == 0) {
+	    return null;
+	} else {
+	    final String[] types = MonsterNames.getAllNames();
+	    final RandomRange r = new RandomRange(0, types.length - 1);
+	    this.setType(types[r.generate()]);
+	    this.setElement(new Element(FaithManager.getRandomFaith()));
+	    return MonsterImageManager.getMonsterImage(this.getType(), this.getElement());
+	}
     }
 
     @Override
     protected void loadMonster() {
-        this.image = this.getInitialImage();
+	this.image = this.getInitialImage();
     }
 }

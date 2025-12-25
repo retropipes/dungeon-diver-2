@@ -16,20 +16,20 @@ class MusicTask extends Thread {
 
     // Constructors
     public MusicTask(final Music music) {
-        this.mus = music;
-        this.setName("Music Player");
+	this.mus = music;
+	this.setName("Music Player");
     }
 
     @Override
     public void run() {
-        try {
-            this.mus.playLoop();
-        } catch (final BufferUnderflowException bue) {
-            // Ignore
-        } catch (final NullPointerException np) {
-            // Ignore
-        } catch (final Throwable t) {
-            DungeonDiver2.getErrorLogger().logError(t);
-        }
+	try {
+	    this.mus.playLoop();
+	} catch (final BufferUnderflowException bue) {
+	    // Ignore
+	} catch (final NullPointerException np) {
+	    // Ignore
+	} catch (final Throwable t) {
+	    DungeonDiver2.getErrorLogger().logError(t);
+	}
     }
 }

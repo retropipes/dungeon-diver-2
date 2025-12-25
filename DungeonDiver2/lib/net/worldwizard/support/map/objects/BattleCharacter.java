@@ -12,6 +12,6 @@ import net.worldwizard.support.map.generic.GenericBattleCharacter;
 public class BattleCharacter extends GenericBattleCharacter {
     // Constructors
     public BattleCharacter(final Creature newTemplate) {
-        super(newTemplate);
+	super(newTemplate);
     }
 }

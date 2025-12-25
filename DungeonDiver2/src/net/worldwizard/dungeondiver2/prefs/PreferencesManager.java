@@ -39,181 +39,177 @@ public class PreferencesManager {
 
     // Private constructor
     private PreferencesManager() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static int getGeneratorRandomness() {
-        return PreferencesManager.storeMgr.getInteger("GeneratorRandomness", 3);
+	return PreferencesManager.storeMgr.getInteger("GeneratorRandomness", 3);
     }
 
     static void setGeneratorRandomness(final int value) {
-        PreferencesManager.storeMgr.setInteger("GeneratorRandomness", value);
-        DungeonDiver2.getApplication().getVariablesManager().getMap()
-                .setGeneratorRandomness(value, 6);
+	PreferencesManager.storeMgr.setInteger("GeneratorRandomness", value);
+	DungeonDiver2.getApplication().getVariablesManager().getMap().setGeneratorRandomness(value, 6);
     }
 
     public static int getBattleSpeed() {
-        return BattleSpeedConstants.BATTLE_SPEED_ARRAY[PreferencesManager.storeMgr
-                .getInteger("BattleSpeed",
-                        BattleSpeedConstants.BATTLE_SPEED_MODERATE)];
+	return BattleSpeedConstants.BATTLE_SPEED_ARRAY[PreferencesManager.storeMgr.getInteger("BattleSpeed",
+		BattleSpeedConstants.BATTLE_SPEED_MODERATE)];
     }
 
     static int getBattleSpeedValue() {
-        return PreferencesManager.storeMgr.getInteger("BattleSpeed",
-                BattleSpeedConstants.BATTLE_SPEED_MODERATE);
+	return PreferencesManager.storeMgr.getInteger("BattleSpeed", BattleSpeedConstants.BATTLE_SPEED_MODERATE);
     }
 
     static void setBattleSpeed(final int value) {
-        PreferencesManager.storeMgr.setInteger("BattleSpeed", value);
+	PreferencesManager.storeMgr.setInteger("BattleSpeed", value);
     }
 
     public static String getLastDirOpen() {
-        return PreferencesManager.storeMgr.getString("LastDirOpen", "");
+	return PreferencesManager.storeMgr.getString("LastDirOpen", "");
     }
 
     public static void setLastDirOpen(final String value) {
-        PreferencesManager.storeMgr.setString("LastDirOpen", value);
+	PreferencesManager.storeMgr.setString("LastDirOpen", value);
     }
 
     public static String getLastDirSave() {
-        return PreferencesManager.storeMgr.getString("LastDirSave", "");
+	return PreferencesManager.storeMgr.getString("LastDirSave", "");
     }
 
     public static void setLastDirSave(final String value) {
-        PreferencesManager.storeMgr.setString("LastDirSave", value);
+	PreferencesManager.storeMgr.setString("LastDirSave", value);
     }
 
     public static boolean shouldCheckUpdatesAtStartup() {
-        return PreferencesManager.storeMgr.getBoolean("UpdatesStartup", true);
+	return PreferencesManager.storeMgr.getBoolean("UpdatesStartup", true);
     }
 
     public static boolean shouldCheckBetaUpdatesAtStartup() {
-        if (Support.isBetaModeEnabled()) {
-            return PreferencesManager.storeMgr.getBoolean("BetaUpdatesStartup",
-                    true);
-        } else {
-            return false;
-        }
+	if (Support.isBetaModeEnabled()) {
+	    return PreferencesManager.storeMgr.getBoolean("BetaUpdatesStartup", true);
+	} else {
+	    return false;
+	}
     }
 
     static void setCheckUpdatesAtStartup(final boolean value) {
-        PreferencesManager.storeMgr.setBoolean("UpdatesStartup", value);
+	PreferencesManager.storeMgr.setBoolean("UpdatesStartup", value);
     }
 
     static void setCheckBetaUpdatesAtStartup(final boolean value) {
-        PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", value);
+	PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", value);
     }
 
     public static boolean oneMove() {
-        return PreferencesManager.storeMgr.getBoolean("OneMove", true);
+	return PreferencesManager.storeMgr.getBoolean("OneMove", true);
     }
 
     static void setOneMove(final boolean value) {
-        PreferencesManager.storeMgr.setBoolean("OneMove", value);
+	PreferencesManager.storeMgr.setBoolean("OneMove", value);
     }
 
     public static boolean getMusicEnabled(final int mus) {
-        if (!PreferencesManager.storeMgr.getBoolean("MUSIC_0", false)) {
-            return false;
-        } else {
-            return PreferencesManager.storeMgr.getBoolean("MUSIC_" + mus, true);
-        }
+	if (!PreferencesManager.storeMgr.getBoolean("MUSIC_0", false)) {
+	    return false;
+	} else {
+	    return PreferencesManager.storeMgr.getBoolean("MUSIC_" + mus, true);
+	}
     }
 
     public static void setMusicEnabled(final int mus, final boolean status) {
-        PreferencesManager.storeMgr.setBoolean("MUSIC_" + mus, status);
+	PreferencesManager.storeMgr.setBoolean("MUSIC_" + mus, status);
     }
 
     public static JFrame getPrefFrame() {
-        return PreferencesManager.guiMgr.getPrefFrame();
+	return PreferencesManager.guiMgr.getPrefFrame();
     }
 
     public static void showPrefs() {
-        PreferencesManager.guiMgr.showPrefs();
+	PreferencesManager.guiMgr.showPrefs();
     }
 
     private static String getPrefsDirPrefix() {
-        final String osName = System.getProperty("os.name");
-        if (osName.indexOf("Mac OS X") != -1) {
-            // Mac OS X
-            return System.getenv(PreferencesManager.MAC_PREFIX);
-        } else if (osName.indexOf("Windows") != -1) {
-            // Windows
-            return System.getenv(PreferencesManager.WIN_PREFIX);
-        } else {
-            // Other - assume UNIX-like
-            return System.getenv(PreferencesManager.UNIX_PREFIX);
-        }
+	final String osName = System.getProperty("os.name");
+	if (osName.indexOf("Mac OS X") != -1) {
+	    // Mac OS X
+	    return System.getenv(PreferencesManager.MAC_PREFIX);
+	} else if (osName.indexOf("Windows") != -1) {
+	    // Windows
+	    return System.getenv(PreferencesManager.WIN_PREFIX);
+	} else {
+	    // Other - assume UNIX-like
+	    return System.getenv(PreferencesManager.UNIX_PREFIX);
+	}
     }
 
     private static String getPrefsDirectory() {
-        final String osName = System.getProperty("os.name");
-        if (osName.indexOf("Mac OS X") != -1) {
-            // Mac OS X
-            return PreferencesManager.MAC_DIR;
-        } else if (osName.indexOf("Windows") != -1) {
-            // Windows
-            return PreferencesManager.WIN_DIR;
-        } else {
-            // Other - assume UNIX-like
-            return PreferencesManager.UNIX_DIR;
-        }
+	final String osName = System.getProperty("os.name");
+	if (osName.indexOf("Mac OS X") != -1) {
+	    // Mac OS X
+	    return PreferencesManager.MAC_DIR;
+	} else if (osName.indexOf("Windows") != -1) {
+	    // Windows
+	    return PreferencesManager.WIN_DIR;
+	} else {
+	    // Other - assume UNIX-like
+	    return PreferencesManager.UNIX_DIR;
+	}
     }
 
     private static String getPrefsFileExtension() {
-        return "." + Extension.getPreferencesExtension();
+	return "." + Extension.getPreferencesExtension();
     }
 
     private static String getPrefsFileName() {
-        final String osName = System.getProperty("os.name");
-        if (osName.indexOf("Mac OS X") != -1) {
-            // Mac OS X
-            return PreferencesManager.MAC_FILE;
-        } else if (osName.indexOf("Windows") != -1) {
-            // Windows
-            return PreferencesManager.WIN_FILE;
-        } else {
-            // Other - assume UNIX-like
-            return PreferencesManager.UNIX_FILE;
-        }
+	final String osName = System.getProperty("os.name");
+	if (osName.indexOf("Mac OS X") != -1) {
+	    // Mac OS X
+	    return PreferencesManager.MAC_FILE;
+	} else if (osName.indexOf("Windows") != -1) {
+	    // Windows
+	    return PreferencesManager.WIN_FILE;
+	} else {
+	    // Other - assume UNIX-like
+	    return PreferencesManager.UNIX_FILE;
+	}
     }
 
     private static String getPrefsFile() {
-        final StringBuilder b = new StringBuilder();
-        b.append(PreferencesManager.getPrefsDirPrefix());
-        b.append(PreferencesManager.getPrefsDirectory());
-        b.append(PreferencesManager.getPrefsFileName());
-        b.append(PreferencesManager.getPrefsFileExtension());
-        return b.toString();
+	final StringBuilder b = new StringBuilder();
+	b.append(PreferencesManager.getPrefsDirPrefix());
+	b.append(PreferencesManager.getPrefsDirectory());
+	b.append(PreferencesManager.getPrefsFileName());
+	b.append(PreferencesManager.getPrefsFileExtension());
+	return b.toString();
     }
 
     public static void writePrefs() {
-        try (BufferedOutputStream bos = new BufferedOutputStream(
-                new FileOutputStream(PreferencesManager.getPrefsFile()))) {
-            PreferencesManager.storeMgr.saveStore(bos);
-        } catch (final IOException io) {
-            // Ignore
-        }
+	try (BufferedOutputStream bos = new BufferedOutputStream(
+		new FileOutputStream(PreferencesManager.getPrefsFile()))) {
+	    PreferencesManager.storeMgr.saveStore(bos);
+	} catch (final IOException io) {
+	    // Ignore
+	}
     }
 
     static void readPrefs() {
-        try (BufferedInputStream bis = new BufferedInputStream(
-                new FileInputStream(PreferencesManager.getPrefsFile()))) {
-            // Read new preferences
-            PreferencesManager.storeMgr.loadStore(bis);
-        } catch (final IOException io) {
-            // Populate store with defaults
-            PreferencesManager.storeMgr.setString("LastDirOpen", "");
-            PreferencesManager.storeMgr.setString("LastDirSave", "");
-            PreferencesManager.storeMgr.setBoolean("UpdatesStartup", true);
-            PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", true);
-            PreferencesManager.storeMgr.setBoolean("OneMove", true);
-            for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                PreferencesManager.storeMgr.setBoolean("MUSIC_" + x, true);
-            }
-            PreferencesManager.storeMgr.setInteger("BattleSpeed", 2);
-            PreferencesManager.storeMgr.setInteger("GeneratorRandomness", 3);
-        }
+	try (BufferedInputStream bis = new BufferedInputStream(
+		new FileInputStream(PreferencesManager.getPrefsFile()))) {
+	    // Read new preferences
+	    PreferencesManager.storeMgr.loadStore(bis);
+	} catch (final IOException io) {
+	    // Populate store with defaults
+	    PreferencesManager.storeMgr.setString("LastDirOpen", "");
+	    PreferencesManager.storeMgr.setString("LastDirSave", "");
+	    PreferencesManager.storeMgr.setBoolean("UpdatesStartup", true);
+	    PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", true);
+	    PreferencesManager.storeMgr.setBoolean("OneMove", true);
+	    for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
+		PreferencesManager.storeMgr.setBoolean("MUSIC_" + x, true);
+	    }
+	    PreferencesManager.storeMgr.setInteger("BattleSpeed", 2);
+	    PreferencesManager.storeMgr.setInteger("GeneratorRandomness", 3);
+	}
     }
 }

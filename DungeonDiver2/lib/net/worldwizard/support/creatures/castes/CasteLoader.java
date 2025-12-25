@@ -15,27 +15,25 @@ import net.worldwizard.xio.XDataReader;
 public class CasteLoader {
     // Constructors
     private CasteLoader() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static Caste loadCaste(final String file) {
-        if (file.startsWith("$")) {
-            return SystemLoader.loadCaste(file);
-        } else {
-            try {
-                final XDataReader casteFile = new XDataReader(
-                        Support.getVariables().getBasePath() + File.separator
-                                + "castes" + File.separator + file
-                                + Extension.getCasteExtensionWithPeriod(),
-                        Extension.getCasteExtension());
-                final Caste c = Caste.read(casteFile);
-                casteFile.close();
-                return c;
-            } catch (final Exception ex) {
-                Support.getErrorLogger().logError(ex);
-                return null;
-            }
-        }
+	if (file.startsWith("$")) {
+	    return SystemLoader.loadCaste(file);
+	} else {
+	    try {
+		final XDataReader casteFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+			+ "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
+			Extension.getCasteExtension());
+		final Caste c = Caste.read(casteFile);
+		casteFile.close();
+		return c;
+	    } catch (final Exception ex) {
+		Support.getErrorLogger().logError(ex);
+		return null;
+	    }
+	}
     }
 }

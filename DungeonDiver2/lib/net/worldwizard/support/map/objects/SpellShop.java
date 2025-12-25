@@ -6,21 +6,21 @@ import net.worldwizard.support.map.generic.GenericShop;
 public class SpellShop extends GenericShop {
     // Constructors
     public SpellShop() {
-        super(ShopTypes.SHOP_TYPE_SPELLS);
+	super(ShopTypes.SHOP_TYPE_SPELLS);
     }
 
     @Override
     public String getName() {
-        return "Spell Shop";
+	return "Spell Shop";
     }
 
     @Override
     public String getPluralName() {
-        return "Spell Shops";
+	return "Spell Shops";
     }
 
     @Override
     public String getDescription() {
-        return "Spell Shops teach spells, for a fee.";
+	return "Spell Shops teach spells, for a fee.";
     }
 }

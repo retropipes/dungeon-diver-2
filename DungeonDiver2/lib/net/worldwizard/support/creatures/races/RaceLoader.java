@@ -15,27 +15,25 @@ import net.worldwizard.xio.XDataReader;
 public class RaceLoader {
     // Constructors
     private RaceLoader() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static Race loadRace(final String file) {
-        if (file.startsWith("$")) {
-            return SystemLoader.loadRace(file);
-        } else {
-            try {
-                final XDataReader raceFile = new XDataReader(
-                        Support.getVariables().getBasePath() + File.separator
-                                + "races" + File.separator + file
-                                + Extension.getRaceExtensionWithPeriod(),
-                        Extension.getRaceExtension());
-                final Race r = Race.read(raceFile);
-                raceFile.close();
-                return r;
-            } catch (final Exception ex) {
-                Support.getErrorLogger().logError(ex);
-                return null;
-            }
-        }
+	if (file.startsWith("$")) {
+	    return SystemLoader.loadRace(file);
+	} else {
+	    try {
+		final XDataReader raceFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+			+ "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
+			Extension.getRaceExtension());
+		final Race r = Race.read(raceFile);
+		raceFile.close();
+		return r;
+	    } catch (final Exception ex) {
+		Support.getErrorLogger().logError(ex);
+		return null;
+	    }
+	}
     }
 }
