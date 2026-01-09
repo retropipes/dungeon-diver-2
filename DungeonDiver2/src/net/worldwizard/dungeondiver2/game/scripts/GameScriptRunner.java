@@ -1,8 +1,9 @@
 package net.worldwizard.dungeondiver2.game.scripts;
 
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.game.GameManager;
-import net.worldwizard.randomnumbers.RandomRange;
 import net.worldwizard.support.battle.Battle;
 import net.worldwizard.support.items.Shop;
 import net.worldwizard.support.map.generic.GameSounds;
@@ -131,7 +132,7 @@ public final class GameScriptRunner {
 					    battle);
 				} catch (final Exception e) {
 				    // Something went wrong in the battle
-				    DungeonDiver2.getErrorLogger().logError(e);
+				    DungeonDiver2.logError(e);
 				}
 			    }
 			}.start();
@@ -178,7 +179,7 @@ public final class GameScriptRunner {
 		    + pw + ", action #" + actionCounter + ": ";
 	    final String endMsg = e.getMessage();
 	    final String scriptMsg = beginMsg + endMsg;
-	    DungeonDiver2.getNonFatalLogger().logNonFatalError(new GameScriptException(scriptMsg, e));
+	    DungeonDiver2.logWarning(new GameScriptException(scriptMsg, e));
 	}
     }
 

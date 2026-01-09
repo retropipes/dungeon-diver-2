@@ -4,12 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.IDGenerator;
 import net.worldwizard.support.Identifiable;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Item extends Identifiable {
     // Properties
@@ -253,7 +255,7 @@ public class Item extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = new XDataWriter(Support.getSystemVariables().getBasePath() + File.separator + "items"
+	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator + "items"
 		+ File.separator + this.getID() + Extension.getItemExtensionWithPeriod(), Extension.getItemExtension());
 	this.write(writer);
 	writer.close();

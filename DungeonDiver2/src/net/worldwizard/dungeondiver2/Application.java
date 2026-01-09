@@ -9,13 +9,14 @@ import java.awt.Image;
 
 import javax.swing.JFrame;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.dungeondiver2.battle.BattleGUI;
 import net.worldwizard.dungeondiver2.game.GameManager;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.dungeondiver2.resourcemanagers.LogoManager;
 import net.worldwizard.dungeondiver2.variables.VariablesManager;
-import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.items.Shop;
 import net.worldwizard.support.items.ShopTypes;

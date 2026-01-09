@@ -13,13 +13,14 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.utility.FilenameChecker;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.dungeondiver2.Application;
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.support.map.Map;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.FilenameChecker;
 
 public class VariablesManager implements OpenFilesHandler {
     // Fields

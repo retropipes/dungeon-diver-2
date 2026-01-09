@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.IDGenerator;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.ai.AIRoutine;
@@ -12,7 +15,6 @@ import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.creatures.faiths.Faith;
 import net.worldwizard.support.creatures.faiths.FaithManager;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataWriter;
 
 public abstract class BaseMonster extends Creature {
     // Fields
@@ -178,7 +180,7 @@ public abstract class BaseMonster extends Creature {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = new XDataWriter(Support.getSystemVariables().getBasePath() + File.separator
+	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
 		+ "monsters" + File.separator + this.getID() + Extension.getMonsterExtensionWithPeriod(),
 		Extension.getMonsterExtension());
 	this.write(writer);

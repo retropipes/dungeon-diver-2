@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.map.generic.MapObjectList;
 import net.worldwizard.support.map.generic.RandomGenerationRule;
@@ -21,8 +24,6 @@ import net.worldwizard.support.scripts.game.GameActionCode;
 import net.worldwizard.support.scripts.game.GameScriptArea;
 import net.worldwizard.support.scripts.game.GameScriptEntry;
 import net.worldwizard.support.scripts.game.GameScriptEntryArgument;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 class LayeredTower implements Cloneable {
     // Properties

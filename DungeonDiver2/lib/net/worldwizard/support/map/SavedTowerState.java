@@ -7,10 +7,11 @@ package net.worldwizard.support.map;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.map.generic.MapObjectList;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 class SavedTowerState implements Cloneable {
     // Properties

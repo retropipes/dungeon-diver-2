@@ -1,7 +1,7 @@
 package net.worldwizard.support.creatures.faiths;
 
-import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.random.RandomRange;
 
 public class FaithManager {
     private static boolean CACHE_CREATED = false;

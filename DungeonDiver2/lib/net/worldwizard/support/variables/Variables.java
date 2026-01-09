@@ -8,10 +8,12 @@ package net.worldwizard.support.variables;
 import java.io.File;
 import java.io.IOException;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.IDGenerator;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Variables {
     // Properties
@@ -56,14 +58,14 @@ public class Variables {
     }
 
     public void read() throws IOException {
-	final XDataReader reader = new XDataReader(this.basePath + File.separator + "metadata.xml",
+	final XDataReader reader = DataIOFactory.createTagReader(this.basePath + File.separator + "metadata.xml",
 		Extension.getVariablesExtension());
 	this.variablesID = reader.readString();
 	reader.close();
     }
 
     public void write() throws IOException {
-	final XDataWriter writer = new XDataWriter(this.basePath + File.separator + "metadata.xml",
+	final XDataWriter writer = DataIOFactory.createTagWriter(this.basePath + File.separator + "metadata.xml",
 		Extension.getVariablesExtension());
 	writer.writeString(this.variablesID);
 	writer.close();

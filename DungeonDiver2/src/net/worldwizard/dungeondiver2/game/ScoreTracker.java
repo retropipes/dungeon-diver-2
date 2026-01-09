@@ -7,9 +7,10 @@ package net.worldwizard.dungeondiver2.game;
 
 import java.io.File;
 
-import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.scoremanager.SavedScoreManager;
-import net.worldwizard.scoremanager.ScoreManager;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.scoring.SavedScoreManager;
+import org.retropipes.diane.scoring.ScoreManager;
+
 import net.worldwizard.support.variables.Extension;
 
 public class ScoreTracker {
@@ -62,8 +63,8 @@ public class ScoreTracker {
 	    }
 	}
 	this.scoresFile = sf.getAbsolutePath();
-	this.ssMgr = new SavedScoreManager(10, ScoreManager.SORT_ORDER_ASCENDING, 0L, true,
-		"DungeonDiverII High Scores", "points", this.scoresFile);
+	this.ssMgr = new SavedScoreManager(10, ScoreManager.SORT_ORDER_ASCENDING, 0L, "DungeonDiverII High Scores",
+		"points", this.scoresFile);
     }
 
     public void addToScore(final long value) {

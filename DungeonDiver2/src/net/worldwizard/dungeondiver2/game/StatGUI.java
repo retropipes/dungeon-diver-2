@@ -11,7 +11,8 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.resourcemanagers.StatImageManager;

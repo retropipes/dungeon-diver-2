@@ -2,7 +2,8 @@ package net.worldwizard.support.items;
 
 import javax.swing.JOptionPane;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.items.combat.CombatItemList;

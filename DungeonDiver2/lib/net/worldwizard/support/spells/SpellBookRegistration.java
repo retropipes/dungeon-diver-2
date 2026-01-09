@@ -5,10 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.SystemRegistration;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class SpellBookRegistration {
     // Fields

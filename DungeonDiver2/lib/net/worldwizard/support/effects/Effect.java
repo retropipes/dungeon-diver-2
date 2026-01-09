@@ -5,15 +5,17 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.IDGenerator;
 import net.worldwizard.support.Identifiable;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.creatures.StatConstants;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Effect extends Identifiable implements StatConstants {
     // Fields
@@ -521,7 +523,7 @@ public class Effect extends Identifiable implements StatConstants {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = new XDataWriter(Support.getSystemVariables().getBasePath() + File.separator
+	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
 		+ "effects" + File.separator + this.getID() + Extension.getEffectExtensionWithPeriod(),
 		Extension.getEffectExtension());
 	this.write(writer);

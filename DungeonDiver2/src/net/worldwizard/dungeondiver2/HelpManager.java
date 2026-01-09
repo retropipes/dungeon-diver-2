@@ -15,9 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.help.GraphicalHelpViewer;
+
 import net.worldwizard.dungeondiver2.resourcemanagers.GraphicsConstants;
-import net.worldwizard.help.GraphicalHelpViewer;
-import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.support.map.generic.MapObjectList;
 
 public class HelpManager {

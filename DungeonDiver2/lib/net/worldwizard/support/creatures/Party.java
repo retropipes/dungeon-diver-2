@@ -3,7 +3,10 @@ package net.worldwizard.support.creatures;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.objects.BattleCharacter;
 import net.worldwizard.support.resourcemanagers.SoundManager;
@@ -11,8 +14,6 @@ import net.worldwizard.support.scripts.game.GameActionCode;
 import net.worldwizard.support.scripts.game.GameScript;
 import net.worldwizard.support.scripts.game.GameScriptEntry;
 import net.worldwizard.support.scripts.game.GameScriptEntryArgument;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Party {
     // Fields

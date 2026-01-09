@@ -2,13 +2,14 @@ package net.worldwizard.support.items.combat;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.creatures.BattleTarget;
 import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.effects.EffectLoader;
 import net.worldwizard.support.items.Item;
 import net.worldwizard.support.map.generic.GameSounds;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class CombatUsableItem extends Item {
     // Fields

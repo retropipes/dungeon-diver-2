@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.resourcemanagers;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import net.worldwizard.support.creatures.monsters.Element;
 
 public class MonsterImageCache {

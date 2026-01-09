@@ -10,15 +10,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.map.generic.MapObjectList;
 import net.worldwizard.support.map.objects.Empty;
 import net.worldwizard.support.scripts.game.GameScriptArea;
 import net.worldwizard.support.variables.FormatConstants;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Map implements MapConstants {
     // Properties
@@ -327,7 +329,7 @@ public class Map implements MapConstants {
 	m.setXPrefixHandler(this.xmlPrefixHandler);
 	m.setXSuffixHandler(this.xmlSuffixHandler);
 	// Create metafile reader
-	final XDataReader metaReader = new XDataReader(this.mapBasePath + File.separator + "metafile.xml", "map");
+	final XDataReader metaReader = DataIOFactory.createTagReader(this.mapBasePath + File.separator + "metafile.xml", "map");
 	// Read metafile
 	final int version = m.readMapMetafileX(metaReader);
 	metaReader.close();
@@ -341,7 +343,7 @@ public class Map implements MapConstants {
     }
 
     private XDataReader getLevelReaderX() throws IOException {
-	return new XDataReader(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+	return DataIOFactory.createTagReader(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
     private int readMapMetafileX(final XDataReader reader) throws IOException {
@@ -373,7 +375,7 @@ public class Map implements MapConstants {
 
     public void writeMapX() throws IOException {
 	// Create metafile writer
-	final XDataWriter metaWriter = new XDataWriter(this.mapBasePath + File.separator + "metafile.xml", "map");
+	final XDataWriter metaWriter = DataIOFactory.createTagWriter(this.mapBasePath + File.separator + "metafile.xml", "map");
 	// Write metafile
 	this.writeMapMetafileX(metaWriter);
 	// Close writer
@@ -387,7 +389,7 @@ public class Map implements MapConstants {
     }
 
     private XDataWriter getLevelWriterX() throws IOException {
-	return new XDataWriter(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+	return DataIOFactory.createTagWriter(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
     private void writeMapMetafileX(final XDataWriter writer) throws IOException {

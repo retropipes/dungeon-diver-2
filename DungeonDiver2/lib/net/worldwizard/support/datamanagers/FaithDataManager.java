@@ -6,8 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.datamanagers;
 
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+
 import net.worldwizard.support.creatures.faiths.FaithConstants;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class FaithDataManager {
     private static final int ADD_FACTOR = 4;

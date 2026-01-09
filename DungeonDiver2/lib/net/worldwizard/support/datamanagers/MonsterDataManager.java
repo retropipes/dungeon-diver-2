@@ -8,7 +8,7 @@ package net.worldwizard.support.datamanagers;
 
 import java.util.ArrayList;
 
-import net.worldwizard.xio.ResourceStreamReader;
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
 
 public class MonsterDataManager {
     public static String[] getMonsterData() {

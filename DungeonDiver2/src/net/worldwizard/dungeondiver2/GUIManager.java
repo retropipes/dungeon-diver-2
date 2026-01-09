@@ -22,11 +22,12 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.fileio.utility.DirectoryUtilities;
+
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.dungeondiver2.resourcemanagers.LogoManager;
 import net.worldwizard.dungeondiver2.variables.VariablesManager;
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.xio.DirectoryUtilities;
 
 public class GUIManager implements QuitHandler {
     // Fields

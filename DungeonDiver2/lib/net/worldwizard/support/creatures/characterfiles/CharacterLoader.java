@@ -3,10 +3,12 @@ package net.worldwizard.support.creatures.characterfiles;
 import java.io.File;
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class CharacterLoader {
     private static PartyMember loadCharacter(final String name) {
@@ -14,7 +16,7 @@ public class CharacterLoader {
 	XDataReader loader = null;
 	try {
 	    final String loadPath = basePath + File.separator + name + Extension.getCharacterExtensionWithPeriod();
-	    loader = new XDataReader(loadPath, "character");
+	    loader = DataIOFactory.createTagReader(loadPath, "character");
 	    return PartyMember.read(loader);
 	} catch (final Exception e) {
 	    return null;
@@ -57,7 +59,7 @@ public class CharacterLoader {
 	XDataWriter saver = null;
 	try {
 	    final String savePath = characterFile.getAbsolutePath();
-	    saver = new XDataWriter(savePath, "character");
+	    saver = DataIOFactory.createTagWriter(savePath, "character");
 	    character.write(saver);
 	} catch (final Exception e) {
 	    // Ignore

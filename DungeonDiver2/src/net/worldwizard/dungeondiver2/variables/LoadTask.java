@@ -13,14 +13,15 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.utility.ZipUtilities;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.dungeondiver2.Application;
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.resourcemanagers.LogoManager;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.map.InvalidMapException;
 import net.worldwizard.support.map.Map;
-import net.worldwizard.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields
@@ -117,7 +118,7 @@ public class LoadTask extends Thread {
 	    CommonDialogs.showDialog(ime.getMessage());
 	    app.getVariablesManager().handleDeferredSuccess();
 	} catch (final Exception ex) {
-	    DungeonDiver2.getErrorLogger().logError(ex);
+	    DungeonDiver2.logError(ex);
 	} finally {
 	    this.loadFrame.setVisible(false);
 	}

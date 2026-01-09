@@ -2,7 +2,7 @@ package net.worldwizard.support.ai;
 
 import java.util.ArrayList;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
 
 public final class RandomAIRoutinePicker {
     // Fields

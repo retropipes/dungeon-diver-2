@@ -404,7 +404,7 @@ public class MenuManager {
 		}
 		MenuManager.this.checkFlags();
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
     }

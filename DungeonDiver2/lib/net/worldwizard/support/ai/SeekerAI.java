@@ -1,6 +1,6 @@
 package net.worldwizard.support.ai;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
 
 public class SeekerAI extends AIRoutine {
     // Fields

@@ -2,8 +2,8 @@ package net.worldwizard.support.items;
 
 import java.io.IOException;
 
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 
 public class Equipment extends Item {
     // Properties

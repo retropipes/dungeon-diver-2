@@ -1,6 +1,6 @@
 package net.worldwizard.support.creatures.genders;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 public class GenderManager implements GenderConstants {
     private static boolean CACHE_CREATED = false;

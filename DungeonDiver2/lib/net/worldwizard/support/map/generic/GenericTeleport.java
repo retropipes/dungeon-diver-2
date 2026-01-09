@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.map.generic;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.map.Map;
 import net.worldwizard.support.map.MapConstants;
 import net.worldwizard.support.scripts.game.GameActionCode;

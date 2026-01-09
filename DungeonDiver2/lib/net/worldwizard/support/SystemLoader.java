@@ -7,6 +7,9 @@ package net.worldwizard.support;
 
 import java.io.File;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.creatures.castes.Caste;
 import net.worldwizard.support.creatures.races.Race;
 import net.worldwizard.support.effects.Effect;
@@ -14,7 +17,6 @@ import net.worldwizard.support.items.combat.CombatUsableItem;
 import net.worldwizard.support.spells.Spell;
 import net.worldwizard.support.spells.SpellBook;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
 
 public class SystemLoader {
     // Constructors
@@ -25,7 +27,7 @@ public class SystemLoader {
     // Methods
     public static Caste loadCaste(final String file) {
 	try {
-	    final XDataReader casteFile = new XDataReader(Support.getSystemVariables().getBasePath() + File.separator
+	    final XDataReader casteFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
 		    + "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
 		    Extension.getCasteExtension());
 	    final Caste c = Caste.read(casteFile);
@@ -33,14 +35,14 @@ public class SystemLoader {
 	    casteFile.close();
 	    return c;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }
 
     public static Effect loadEffect(final String file) {
 	try {
-	    final XDataReader effectFile = new XDataReader(Support.getSystemVariables().getBasePath() + File.separator
+	    final XDataReader effectFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
 		    + "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
 		    Extension.getEffectExtension());
 	    final Effect e = Effect.read(effectFile);
@@ -48,14 +50,14 @@ public class SystemLoader {
 	    effectFile.close();
 	    return e;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }
 
     public static CombatUsableItem loadCombatItem(final String file) {
 	try {
-	    final XDataReader itemFile = new XDataReader(Support.getSystemVariables().getBasePath() + File.separator
+	    final XDataReader itemFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
 		    + "items" + File.separator + file + Extension.getItemExtensionWithPeriod(),
 		    Extension.getItemExtension());
 	    final CombatUsableItem i = CombatUsableItem.read(itemFile);
@@ -63,7 +65,7 @@ public class SystemLoader {
 	    itemFile.close();
 	    return i;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }
@@ -88,7 +90,7 @@ public class SystemLoader {
 
     public static Race loadRace(final String file) {
 	try {
-	    final XDataReader raceFile = new XDataReader(Support.getSystemVariables().getBasePath() + File.separator
+	    final XDataReader raceFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
 		    + "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
 		    Extension.getRaceExtension());
 	    final Race r = Race.read(raceFile);
@@ -96,14 +98,14 @@ public class SystemLoader {
 	    raceFile.close();
 	    return r;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }
 
     public static Spell loadSpell(final String file) {
 	try {
-	    final XDataReader spellFile = new XDataReader(Support.getSystemVariables().getBasePath() + File.separator
+	    final XDataReader spellFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
 		    + "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
 		    Extension.getSpellExtension());
 	    final Spell s = Spell.read(spellFile);
@@ -111,14 +113,14 @@ public class SystemLoader {
 	    spellFile.close();
 	    return s;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }
 
     public static SpellBook loadSpellBook(final String file) {
 	try {
-	    final XDataReader spellBookFile = new XDataReader(
+	    final XDataReader spellBookFile = DataIOFactory.createTagReader(
 		    Support.getSystemVariables().getBasePath() + File.separator + "spellbooks" + File.separator + file
 			    + Extension.getSpellBookExtensionWithPeriod(),
 		    Extension.getSpellBookExtension());
@@ -127,7 +129,7 @@ public class SystemLoader {
 	    spellBookFile.close();
 	    return sb;
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	    return null;
 	}
     }

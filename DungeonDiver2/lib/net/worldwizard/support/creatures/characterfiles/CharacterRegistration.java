@@ -7,9 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class CharacterRegistration {
     // Fields

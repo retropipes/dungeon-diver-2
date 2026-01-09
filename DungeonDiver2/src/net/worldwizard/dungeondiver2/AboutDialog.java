@@ -93,7 +93,7 @@ public class AboutDialog implements AboutHandler {
 		    ad.hideAboutDialog();
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
     }

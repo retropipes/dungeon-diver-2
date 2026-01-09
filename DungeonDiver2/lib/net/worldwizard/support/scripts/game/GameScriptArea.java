@@ -3,8 +3,8 @@ package net.worldwizard.support.scripts.game;
 import java.awt.Point;
 import java.io.IOException;
 
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 
 public class GameScriptArea extends GameScript {
     // Fields

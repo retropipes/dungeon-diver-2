@@ -2,10 +2,11 @@ package net.worldwizard.dungeondiver2.variables;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.map.PrefixIO;
 import net.worldwizard.support.variables.FormatConstants;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class PrefixHandler implements PrefixIO {
     private static final byte FORMAT_VERSION = (byte) FormatConstants.LATEST_SCENARIO_FORMAT;

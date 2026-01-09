@@ -2,7 +2,7 @@ package net.worldwizard.support;
 
 import java.math.BigInteger;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
 
 public class IDGenerator {
     // Constants
@@ -16,8 +16,7 @@ public class IDGenerator {
 
     // Methods
     public static String generateRandomID() {
-	final RandomRange r = new RandomRange(Long.MIN_VALUE, Long.MAX_VALUE);
-	return Long.toString(r.generateRawLong(), 36).toUpperCase();
+	return Long.toString(RandomRange.generateRawLong(), 36).toUpperCase();
     }
 
     public static BigInteger computeStringLongHash(final String s) {

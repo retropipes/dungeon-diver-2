@@ -1,7 +1,8 @@
 package net.worldwizard.support.creatures.monsters;
 
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.creatures.faiths.FaithManager;
 import net.worldwizard.support.resourcemanagers.MonsterImageManager;
 import net.worldwizard.support.resourcemanagers.MonsterNames;

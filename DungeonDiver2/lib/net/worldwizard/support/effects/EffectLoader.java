@@ -7,10 +7,12 @@ package net.worldwizard.support.effects;
 
 import java.io.File;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.SystemLoader;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
 
 public class EffectLoader {
     // Constructors
@@ -24,14 +26,14 @@ public class EffectLoader {
 	    return SystemLoader.loadEffect(file);
 	} else {
 	    try {
-		final XDataReader effectFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+		final XDataReader effectFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
 			+ "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
 			Extension.getEffectExtension());
 		final Effect e = Effect.read(effectFile);
 		effectFile.close();
 		return e;
 	    } catch (final Exception ex) {
-		Support.getErrorLogger().logError(ex);
+		Support.logError(ex);
 		return null;
 	    }
 	}

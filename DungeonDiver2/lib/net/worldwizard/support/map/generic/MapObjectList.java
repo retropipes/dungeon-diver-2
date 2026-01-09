@@ -8,7 +8,9 @@ package net.worldwizard.support.map.generic;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.map.MapConstants;
 import net.worldwizard.support.map.objects.ArmorShop;
 import net.worldwizard.support.map.objects.Bank;
@@ -80,7 +82,6 @@ import net.worldwizard.support.map.objects.YellowWallOff;
 import net.worldwizard.support.map.objects.YellowWallOn;
 import net.worldwizard.support.resourcemanagers.ImageTransformer;
 import net.worldwizard.support.variables.FormatConstants;
-import net.worldwizard.xio.XDataReader;
 
 public class MapObjectList {
     // Fields

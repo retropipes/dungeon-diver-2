@@ -1,6 +1,7 @@
 package net.worldwizard.support.items;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.creatures.Creature;
 
 public final class Socks extends Equipment {

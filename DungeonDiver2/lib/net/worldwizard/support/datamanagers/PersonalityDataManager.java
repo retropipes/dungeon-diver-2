@@ -6,8 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.datamanagers;
 
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+
 import net.worldwizard.support.creatures.personalities.PersonalityConstants;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class PersonalityDataManager {
     public static int[] getPersonalityData(final int p) {

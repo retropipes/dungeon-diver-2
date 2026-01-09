@@ -13,7 +13,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.UIManager;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
 
 public class StatImageManager {
     private static final Color TRANSPARENT = new Color(200, 100, 100);

@@ -5,8 +5,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.datamanagers;
 
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+
 import net.worldwizard.support.creatures.genders.GenderConstants;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class GenderDataManager {
     public static int[] getGenderData(final int g) {

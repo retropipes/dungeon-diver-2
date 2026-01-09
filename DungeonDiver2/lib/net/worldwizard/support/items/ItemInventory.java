@@ -9,11 +9,12 @@ package net.worldwizard.support.items;
 import java.io.IOException;
 import java.util.Arrays;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.creatures.StatConstants;
 import net.worldwizard.support.items.combat.CombatItemList;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class ItemInventory {
     // Properties

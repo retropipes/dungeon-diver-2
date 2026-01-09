@@ -20,15 +20,16 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.battle.damageengines.DamageEngine;
 import net.worldwizard.dungeondiver2.game.scripts.GameScriptRunner;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.dungeondiver2.resourcemanagers.MusicConstants;
 import net.worldwizard.dungeondiver2.resourcemanagers.MusicManager;
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.randomnumbers.RandomRange;
 import net.worldwizard.support.ai.AIContext;
 import net.worldwizard.support.ai.AIRoutine;
 import net.worldwizard.support.ai.AutoAI;
@@ -1352,7 +1353,7 @@ public class BattleGUI {
 		    }
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 

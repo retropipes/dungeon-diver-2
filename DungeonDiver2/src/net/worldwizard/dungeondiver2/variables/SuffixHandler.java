@@ -2,10 +2,11 @@ package net.worldwizard.dungeondiver2.variables;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.support.map.SuffixIO;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class SuffixHandler implements SuffixIO {
     @Override

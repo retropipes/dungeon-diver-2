@@ -7,10 +7,12 @@ package net.worldwizard.support.creatures.races;
 
 import java.io.File;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.SystemLoader;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
 
 public class RaceLoader {
     // Constructors
@@ -24,14 +26,14 @@ public class RaceLoader {
 	    return SystemLoader.loadRace(file);
 	} else {
 	    try {
-		final XDataReader raceFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+		final XDataReader raceFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
 			+ "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
 			Extension.getRaceExtension());
 		final Race r = Race.read(raceFile);
 		raceFile.close();
 		return r;
 	    } catch (final Exception ex) {
-		Support.getErrorLogger().logError(ex);
+		Support.logError(ex);
 		return null;
 	    }
 	}

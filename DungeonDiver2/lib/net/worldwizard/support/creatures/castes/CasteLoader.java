@@ -7,10 +7,12 @@ package net.worldwizard.support.creatures.castes;
 
 import java.io.File;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.SystemLoader;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
 
 public class CasteLoader {
     // Constructors
@@ -24,14 +26,14 @@ public class CasteLoader {
 	    return SystemLoader.loadCaste(file);
 	} else {
 	    try {
-		final XDataReader casteFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+		final XDataReader casteFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
 			+ "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
 			Extension.getCasteExtension());
 		final Caste c = Caste.read(casteFile);
 		casteFile.close();
 		return c;
 	    } catch (final Exception ex) {
-		Support.getErrorLogger().logError(ex);
+		Support.logError(ex);
 		return null;
 	    }
 	}

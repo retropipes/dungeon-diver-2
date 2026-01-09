@@ -5,20 +5,19 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support;
 
-import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.errorlogger.ErrorLogger;
+import org.retropipes.diane.Diane;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.variables.Variables;
 
 public class Support {
     // Constants
-    private static final String PROGRAM_NAME = "DungeonDiverII";
     private static final String ERROR_MESSAGE = "Perhaps a bug is to blame for this error message.\n"
 	    + "Include the debug log with your bug report.\n" + "Email bug reports to: products@puttysoftware.com\n"
 	    + "Subject: DungeonDiverII Bug Report";
     private static final String SCRIPT_ERROR_MESSAGE = "A problem has occurred while running a script.\n"
 	    + "This error is non-fatal, and has been logged.";
     private static final String ERROR_TITLE = "DungeonDiverII Error";
-    private static final ErrorLogger elog = new ErrorLogger(Support.PROGRAM_NAME);
     private static final int VERSION_MAJOR = 2;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
@@ -31,16 +30,16 @@ public class Support {
     public static final int MAP_FLOORS = 8;
 
     // Methods
-    public static ErrorLogger getErrorLogger() {
+    public static void logError(final Throwable t) {
 	// Display error message
 	CommonDialogs.showErrorDialog(Support.ERROR_MESSAGE, Support.ERROR_TITLE);
-	return Support.elog;
+	Diane.handleError(t);
     }
 
-    public static ErrorLogger getNonFatalLogger() {
+    public static void logWarning(final Throwable t) {
 	// Display error message
 	CommonDialogs.showErrorDialog(Support.SCRIPT_ERROR_MESSAGE, Support.ERROR_TITLE);
-	return Support.elog;
+	Diane.handleWarning(t);
     }
 
     public static Variables getVariables() {

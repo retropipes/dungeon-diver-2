@@ -7,7 +7,8 @@ package net.worldwizard.support.resourcemanagers;
 
 import java.awt.Color;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import net.worldwizard.support.map.generic.TemplateTransform;
 
 public class ImageTransformer {

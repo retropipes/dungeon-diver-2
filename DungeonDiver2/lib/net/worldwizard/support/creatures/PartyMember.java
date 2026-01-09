@@ -2,8 +2,11 @@ package net.worldwizard.support.creatures;
 
 import java.io.IOException;
 
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.creatures.castes.Caste;
 import net.worldwizard.support.creatures.castes.CasteConstants;
 import net.worldwizard.support.creatures.castes.CasteManager;
@@ -18,8 +21,6 @@ import net.worldwizard.support.creatures.races.RaceConstants;
 import net.worldwizard.support.items.ItemInventory;
 import net.worldwizard.support.resourcemanagers.PlayerImageManager;
 import net.worldwizard.support.spells.SpellBook;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class PartyMember extends Creature {
     // Fields

@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.IDGenerator;
 import net.worldwizard.support.Identifiable;
 import net.worldwizard.support.Support;
@@ -12,8 +16,6 @@ import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.effects.EffectLoader;
 import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class Spell extends Identifiable {
     // Fields
@@ -150,7 +152,7 @@ public class Spell extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = new XDataWriter(Support.getSystemVariables().getBasePath() + File.separator
+	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
 		+ "spells" + File.separator + this.getID() + Extension.getSpellExtensionWithPeriod(),
 		Extension.getSpellExtension());
 	this.write(writer);

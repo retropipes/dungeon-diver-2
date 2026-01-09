@@ -206,7 +206,7 @@ class PreferencesGUIManager {
 		    pm.hidePrefs();
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 
@@ -230,7 +230,7 @@ class PreferencesGUIManager {
 		    }
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 

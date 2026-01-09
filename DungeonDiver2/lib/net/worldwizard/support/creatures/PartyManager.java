@@ -10,7 +10,10 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.creatures.castes.Caste;
 import net.worldwizard.support.creatures.castes.CasteManager;
 import net.worldwizard.support.creatures.characterfiles.CharacterLoader;
@@ -23,8 +26,6 @@ import net.worldwizard.support.creatures.personalities.Personality;
 import net.worldwizard.support.creatures.personalities.PersonalityManager;
 import net.worldwizard.support.creatures.races.Race;
 import net.worldwizard.support.creatures.races.RaceManager;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class PartyManager {
     // Fields
@@ -58,7 +59,7 @@ public class PartyManager {
 		    CharacterLoader.saveCharacter(pc);
 		}
 	    } else {
-		final int response = CommonDialogs.showCustomDialog("Pick, Create, or Done?", "Create Party",
+		final int response = CommonDialogs.showCustomDialogWithDefault("Pick, Create, or Done?", "Create Party",
 			buttonNames, buttonNames[2]);
 		if (response == 2) {
 		    pc = pickParty.pickOnePartyMemberCreate();

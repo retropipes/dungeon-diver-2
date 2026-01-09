@@ -1,6 +1,7 @@
 package net.worldwizard.dungeondiver2.battle.damageengines;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.creatures.StatConstants;
 

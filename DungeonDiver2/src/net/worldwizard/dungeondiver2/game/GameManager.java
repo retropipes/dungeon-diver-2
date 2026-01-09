@@ -25,7 +25,10 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.dungeondiver2.Application;
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.game.scripts.GameScriptRunner;
@@ -51,8 +54,6 @@ import net.worldwizard.support.resourcemanagers.ImageTransformer;
 import net.worldwizard.support.resourcemanagers.MapObjectImageManager;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 import net.worldwizard.support.scripts.game.GameScriptArea;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public class GameManager {
     // Fields
@@ -900,7 +901,7 @@ public class GameManager {
 		    }
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 
@@ -935,7 +936,7 @@ public class GameManager {
 		    app.getGameManager().exitGame();
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 
@@ -980,7 +981,7 @@ public class GameManager {
 		    gm.identifyObject(x, y);
 		}
 	    } catch (final Exception ex) {
-		DungeonDiver2.getErrorLogger().logError(ex);
+		DungeonDiver2.logError(ex);
 	    }
 	}
 

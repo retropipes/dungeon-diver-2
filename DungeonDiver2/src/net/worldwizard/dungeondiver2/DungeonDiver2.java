@@ -8,11 +8,10 @@ package net.worldwizard.dungeondiver2;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.PreferencesHandler;
 
+import org.retropipes.diane.gui.dialog.CommonDialogs;
 import org.retropipes.diane.integration.Integration;
 
-import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
-import net.worldwizard.errorlogger.ErrorLogger;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.ai.AIRegistration;
 import net.worldwizard.support.map.Map;
@@ -28,12 +27,12 @@ public class DungeonDiver2 {
 	return DungeonDiver2.application;
     }
 
-    public static ErrorLogger getErrorLogger() {
-	return Support.getErrorLogger();
+    public static void logError(final Throwable t) {
+	Support.logError(t);
     }
 
-    public static ErrorLogger getNonFatalLogger() {
-	return Support.getNonFatalLogger();
+    public static void logWarning(final Throwable t) {
+	Support.logWarning(t);
     }
 
     public static String getProgramName() {
@@ -67,7 +66,7 @@ public class DungeonDiver2 {
 	    // Set default title
 	    CommonDialogs.setDefaultTitle(DungeonDiver2.PROGRAM_NAME);
 	} catch (final Throwable t) {
-	    DungeonDiver2.getErrorLogger().logError(t);
+	    DungeonDiver2.logError(t);
 	}
     }
 

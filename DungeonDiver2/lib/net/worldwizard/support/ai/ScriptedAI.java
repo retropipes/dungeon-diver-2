@@ -6,7 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.creatures.StatConstants;
 
@@ -35,7 +36,7 @@ public class ScriptedAI extends AIRoutine {
 	// Jump to main section
 	this.counter = this.jumpToSection("main");
 	if (this.counter == -1) {
-	    Support.getNonFatalLogger().logNonFatalError(new RuntimeException("AI script section \"main\" not found!"));
+	    Support.logWarning(new RuntimeException("AI script section \"main\" not found!"));
 	    return AIRoutine.ACTION_END_TURN;
 	}
 	// Loop until done
@@ -140,7 +141,7 @@ public class ScriptedAI extends AIRoutine {
 			final String sectionName = command.substring(AIScriptConstants.JUMP_TO.length());
 			this.counter = this.jumpToSection(sectionName);
 			if (this.counter == -1) {
-			    Support.getNonFatalLogger().logNonFatalError(
+			    Support.logWarning(
 				    new RuntimeException("AI script section \"" + sectionName + "\" not found!"));
 			    return AIRoutine.ACTION_END_TURN;
 			}
@@ -163,7 +164,7 @@ public class ScriptedAI extends AIRoutine {
 			} else if (testingWhat.equals(AIScriptConstants.META_COMMAND_ATTACK)) {
 			    testResult = !ScriptedAI.testAttack(ac);
 			} else {
-			    Support.getNonFatalLogger().logNonFatalError(
+			    Support.logWarning(
 				    new RuntimeException("Unknown AI script command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
@@ -191,7 +192,7 @@ public class ScriptedAI extends AIRoutine {
 			} else if (testingWhat.equals(AIScriptConstants.META_COMMAND_ATTACK)) {
 			    testResult = ScriptedAI.testAttack(ac);
 			} else {
-			    Support.getNonFatalLogger().logNonFatalError(
+			    Support.logWarning(
 				    new RuntimeException("Unknown AI script command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
@@ -210,8 +211,8 @@ public class ScriptedAI extends AIRoutine {
 				throw new NumberFormatException();
 			    }
 			} catch (final NumberFormatException nfe) {
-			    Support.getNonFatalLogger()
-				    .logNonFatalError(new RuntimeException("Malformed scan command found: " + command));
+			    Support
+				    .logWarning(new RuntimeException("Malformed scan command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
 			final int[] scanResult = ac.isEnemyNearby(scanRadius, scanRadius);
@@ -224,13 +225,13 @@ public class ScriptedAI extends AIRoutine {
 			}
 			this.counter++;
 		    } else {
-			Support.getNonFatalLogger()
-				.logNonFatalError(new RuntimeException("Unknown AI script command found: " + command));
+			Support
+				.logWarning(new RuntimeException("Unknown AI script command found: " + command));
 			return AIRoutine.ACTION_END_TURN;
 		    }
 		}
 	    } catch (final RuntimeException re) {
-		Support.getNonFatalLogger().logNonFatalError(re);
+		Support.logWarning(re);
 		return AIRoutine.ACTION_END_TURN;
 	    }
 	}

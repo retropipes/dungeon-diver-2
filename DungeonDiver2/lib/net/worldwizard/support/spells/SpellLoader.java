@@ -7,10 +7,12 @@ package net.worldwizard.support.spells;
 
 import java.io.File;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+
 import net.worldwizard.support.Support;
 import net.worldwizard.support.SystemLoader;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.XDataReader;
 
 public class SpellLoader {
     // Constructors
@@ -24,14 +26,14 @@ public class SpellLoader {
 	    return SystemLoader.loadSpell(file);
 	} else {
 	    try {
-		final XDataReader spellFile = new XDataReader(Support.getVariables().getBasePath() + File.separator
+		final XDataReader spellFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
 			+ "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
 			Extension.getSpellExtension());
 		final Spell s = Spell.read(spellFile);
 		spellFile.close();
 		return s;
 	    } catch (final Exception ex) {
-		Support.getErrorLogger().logError(ex);
+		Support.logError(ex);
 		return null;
 	    }
 	}

@@ -25,7 +25,7 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.JFrame;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 /**
  *

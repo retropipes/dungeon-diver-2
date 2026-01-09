@@ -12,7 +12,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.creatures.monsters.Element;
 import net.worldwizard.support.creatures.races.RaceConstants;

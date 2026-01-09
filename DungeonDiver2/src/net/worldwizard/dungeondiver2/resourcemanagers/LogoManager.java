@@ -12,7 +12,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
 
 public class LogoManager {
     private static final String DEFAULT_LOAD_PATH = "/net/worldwizard/dungeondiver2/resources/graphics/logo/";

@@ -5,8 +5,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.battle;
 
-import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.ai.AIContext;
 import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.map.Map;

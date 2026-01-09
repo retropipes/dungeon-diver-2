@@ -1,6 +1,6 @@
 package net.worldwizard.support.creatures.personalities;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 public class PersonalityManager implements PersonalityConstants {
     private static boolean CACHE_CREATED = false;

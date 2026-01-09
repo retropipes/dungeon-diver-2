@@ -8,12 +8,13 @@ package net.worldwizard.dungeondiver2.variables;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.utility.ZipUtilities;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.dungeondiver2.Application;
 import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.ZipUtilities;
 
 public class SaveTask extends Thread {
     // Fields
@@ -62,7 +63,7 @@ public class SaveTask extends Thread {
 	    CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
 		    + " file failed, probably due to illegal characters in the file name.");
 	} catch (final Exception ex) {
-	    DungeonDiver2.getErrorLogger().logError(ex);
+	    DungeonDiver2.logError(ex);
 	}
 	DungeonDiver2.getApplication().showMessage(sg + " file saved.");
 	app.getVariablesManager().handleDeferredSuccess();

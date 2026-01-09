@@ -8,9 +8,10 @@ package net.worldwizard.support.variables;
 import java.io.File;
 import java.io.InputStream;
 
+import org.retropipes.diane.fileio.utility.FileUtilities;
+import org.retropipes.diane.fileio.utility.ZipUtilities;
+
 import net.worldwizard.support.Support;
-import net.worldwizard.xio.DirectoryUtilities;
-import net.worldwizard.xio.ZipUtilities;
 
 public class SystemVariablesLoader {
     // Constructors
@@ -24,10 +25,10 @@ public class SystemVariablesLoader {
 	try (final InputStream sysStream = SystemVariablesLoader.class
 		.getResourceAsStream("/net/worldwizard/support/resources/sysdump/core.sysdump")) {
 	    final File tempSys = new File(Variables.getTempFolder() + File.separator + "core.sysdump");
-	    DirectoryUtilities.copyRAMFile(sysStream, tempSys);
+	    FileUtilities.copyRAMFile(sysStream, tempSys);
 	    ZipUtilities.unzipDirectory(tempSys, new File(Support.getSystemVariables().getBasePath()));
 	} catch (final Exception ex) {
-	    Support.getErrorLogger().logError(ex);
+	    Support.logError(ex);
 	}
     }
 }

@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.map.Map;
 import net.worldwizard.support.map.MapConstants;
 import net.worldwizard.support.resourcemanagers.MapObjectImageManager;
@@ -18,8 +21,6 @@ import net.worldwizard.support.scripts.game.GameActionCode;
 import net.worldwizard.support.scripts.game.GameScript;
 import net.worldwizard.support.scripts.game.GameScriptEntry;
 import net.worldwizard.support.scripts.game.GameScriptEntryArgument;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public abstract class MapObject implements TypeConstants, RandomGenerationRule {
     // Properties

@@ -1,6 +1,7 @@
 package net.worldwizard.support.creatures.monsters;
 
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.creatures.StatConstants;
 import net.worldwizard.support.items.Equipment;

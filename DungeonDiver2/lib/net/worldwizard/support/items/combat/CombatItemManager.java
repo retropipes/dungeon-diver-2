@@ -1,6 +1,7 @@
 package net.worldwizard.support.items.combat;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.battle.BattleDefinitions;
 import net.worldwizard.support.creatures.BattleTarget;
 import net.worldwizard.support.creatures.Creature;

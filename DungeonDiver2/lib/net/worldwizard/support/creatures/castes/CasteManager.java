@@ -1,6 +1,7 @@
 package net.worldwizard.support.creatures.castes;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.spells.SpellBook;
 import net.worldwizard.support.spells.SpellBookLoader;
 import net.worldwizard.support.spells.SpellBookRegistration;

@@ -9,10 +9,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.fileio.utility.FileUtilities;
+import org.retropipes.diane.fileio.utility.ResourceStreamReader;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import net.worldwizard.support.variables.Extension;
-import net.worldwizard.xio.DirectoryUtilities;
-import net.worldwizard.xio.ResourceStreamReader;
 
 public class AIRegistration {
     // Fields
@@ -158,7 +159,7 @@ public class AIRegistration {
 	    final String basePath = AIRegistration.getBasePath();
 	    final File dest = new File(basePath + File.separator + AIRegistration.getFileNameOnly(source));
 	    try {
-		DirectoryUtilities.copyFile(source, dest);
+		FileUtilities.copyFile(source, dest);
 		AIRegistration
 			.autoregisterAI(AIRegistration.getNameWithoutExtension(AIRegistration.getFileNameOnly(dest)));
 		CommonDialogs.showTitledDialog("AI Imported Successfully.", "Import AI");

@@ -1,6 +1,6 @@
 package net.worldwizard.support.creatures.races;
 
-import net.worldwizard.commondialogs.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 public class RaceManager {
     private static boolean CACHE_CREATED = false;

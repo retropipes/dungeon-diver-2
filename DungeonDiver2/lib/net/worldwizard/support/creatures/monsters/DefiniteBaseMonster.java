@@ -1,6 +1,7 @@
 package net.worldwizard.support.creatures.monsters;
 
-import net.worldwizard.images.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import net.worldwizard.support.resourcemanagers.MonsterImageManager;
 
 public abstract class DefiniteBaseMonster extends BaseMonster {

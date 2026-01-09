@@ -3,8 +3,9 @@ package net.worldwizard.support.creatures;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import net.worldwizard.images.BufferedImageIcon;
-import net.worldwizard.randomnumbers.RandomRange;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.random.RandomRange;
+
 import net.worldwizard.support.IDGenerator;
 import net.worldwizard.support.Identifiable;
 import net.worldwizard.support.ai.AIRoutine;

@@ -7,10 +7,11 @@ package net.worldwizard.support.map.generic;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import net.worldwizard.support.map.MapConstants;
 import net.worldwizard.support.map.objects.Empty;
-import net.worldwizard.xio.XDataReader;
-import net.worldwizard.xio.XDataWriter;
 
 public abstract class GenericCharacter extends MapObject {
     // Constructors
