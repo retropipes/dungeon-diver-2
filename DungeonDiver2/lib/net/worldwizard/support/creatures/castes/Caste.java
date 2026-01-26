@@ -60,11 +60,13 @@ public class Caste extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
-		+ "castes" + File.separator + this.getID() + Extension.getCasteExtensionWithPeriod(),
-		Extension.getCasteExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "castes" + File.separator
+				+ this.getID() + Extension.getCasteExtensionWithPeriod(),
+			Extension.getCasteExtension())) {
+	    this.write(writer);
+	}
     }
 
     public static Caste read(final XDataReader casteFile) throws IOException {

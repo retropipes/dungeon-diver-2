@@ -58,16 +58,16 @@ public class Variables {
     }
 
     public void read() throws IOException {
-	final XDataReader reader = DataIOFactory.createTagReader(this.basePath + File.separator + "metadata.xml",
-		Extension.getVariablesExtension());
-	this.variablesID = reader.readString();
-	reader.close();
+	try (final XDataReader reader = DataIOFactory.createTagReader(this.basePath + File.separator + "metadata.xml",
+		Extension.getVariablesExtension())) {
+	    this.variablesID = reader.readString();
+	}
     }
 
     public void write() throws IOException {
-	final XDataWriter writer = DataIOFactory.createTagWriter(this.basePath + File.separator + "metadata.xml",
-		Extension.getVariablesExtension());
-	writer.writeString(this.variablesID);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory.createTagWriter(this.basePath + File.separator + "metadata.xml",
+		Extension.getVariablesExtension())) {
+	    writer.writeString(this.variablesID);
+	}
     }
 }

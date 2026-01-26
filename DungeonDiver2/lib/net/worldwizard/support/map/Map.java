@@ -113,21 +113,17 @@ public class Map implements MapConstants {
     private void switchLevelInternal(final int level) {
 	if (this.activeLevel != level) {
 	    if (this.mapData != null) {
-		try {
+		try (final XDataWriter writer = this.getLevelWriterX()) {
 		    // Save old level
-		    final XDataWriter writer = this.getLevelWriterX();
 		    this.writeMapLevelX(writer);
-		    writer.close();
 		} catch (final IOException io) {
 		    // Ignore
 		}
 	    }
 	    this.activeLevel = level;
-	    try {
+	    try (final XDataReader reader = this.getLevelReaderX()) {
 		// Load new level
-		final XDataReader reader = this.getLevelReaderX();
 		this.readMapLevelX(reader);
-		reader.close();
 	    } catch (final IOException io) {
 		// Ignore
 	    }
@@ -149,11 +145,9 @@ public class Map implements MapConstants {
     public boolean addLevel(final int rows, final int cols, final int floors) {
 	if (this.levelCount < Map.MAX_LEVELS) {
 	    if (this.mapData != null) {
-		try {
+		try (final XDataWriter writer = this.getLevelWriterX()) {
 		    // Save old level
-		    final XDataWriter writer = this.getLevelWriterX();
 		    this.writeMapLevelX(writer);
-		    writer.close();
 		} catch (final IOException io) {
 		    // Ignore
 		}
@@ -328,22 +322,24 @@ public class Map implements MapConstants {
 	// Attach handlers
 	m.setXPrefixHandler(this.xmlPrefixHandler);
 	m.setXSuffixHandler(this.xmlSuffixHandler);
+	int version = 0;
 	// Create metafile reader
-	final XDataReader metaReader = DataIOFactory.createTagReader(this.mapBasePath + File.separator + "metafile.xml", "map");
-	// Read metafile
-	final int version = m.readMapMetafileX(metaReader);
-	metaReader.close();
+	try (final XDataReader metaReader = DataIOFactory
+		.createTagReader(this.mapBasePath + File.separator + "metafile.xml", "map")) {
+	    // Read metafile
+	    version = m.readMapMetafileX(metaReader);
+	}
 	// Create data reader
-	final XDataReader dataReader = m.getLevelReaderX();
-	// Read data
-	m.readMapLevelX(dataReader, version);
-	// Close reader
-	dataReader.close();
+	try (final XDataReader dataReader = m.getLevelReaderX()) {
+	    // Read data
+	    m.readMapLevelX(dataReader, version);
+	}
 	return m;
     }
 
     private XDataReader getLevelReaderX() throws IOException {
-	return DataIOFactory.createTagReader(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+	return DataIOFactory.createTagReader(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml",
+		"level");
     }
 
     private int readMapMetafileX(final XDataReader reader) throws IOException {
@@ -375,21 +371,21 @@ public class Map implements MapConstants {
 
     public void writeMapX() throws IOException {
 	// Create metafile writer
-	final XDataWriter metaWriter = DataIOFactory.createTagWriter(this.mapBasePath + File.separator + "metafile.xml", "map");
-	// Write metafile
-	this.writeMapMetafileX(metaWriter);
-	// Close writer
-	metaWriter.close();
+	try (final XDataWriter metaWriter = DataIOFactory
+		.createTagWriter(this.mapBasePath + File.separator + "metafile.xml", "map")) {
+	    // Write metafile
+	    this.writeMapMetafileX(metaWriter);
+	}
 	// Create data writer
-	final XDataWriter dataWriter = this.getLevelWriterX();
-	// Write data
-	this.writeMapLevelX(dataWriter);
-	// Close writer
-	dataWriter.close();
+	try (final XDataWriter dataWriter = this.getLevelWriterX()) {
+	    // Write data
+	    this.writeMapLevelX(dataWriter);
+	}
     }
 
     private XDataWriter getLevelWriterX() throws IOException {
-	return DataIOFactory.createTagWriter(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+	return DataIOFactory.createTagWriter(this.mapBasePath + File.separator + "level" + this.activeLevel + ".xml",
+		"level");
     }
 
     private void writeMapMetafileX(final XDataWriter writer) throws IOException {

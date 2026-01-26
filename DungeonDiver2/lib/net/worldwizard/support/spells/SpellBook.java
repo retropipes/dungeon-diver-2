@@ -312,12 +312,12 @@ public class SpellBook extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(
+	try (final XDataWriter writer = DataIOFactory.createTagWriter(
 		Support.getSystemVariables().getBasePath() + File.separator + "spellbooks" + File.separator
 			+ this.getID() + Extension.getSpellBookExtensionWithPeriod(),
-		Extension.getSpellBookExtension());
-	this.write(writer);
-	writer.close();
+		Extension.getSpellBookExtension())) {
+	    this.write(writer);
+	}
     }
 
     @Override

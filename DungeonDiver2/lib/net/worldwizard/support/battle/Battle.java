@@ -100,11 +100,13 @@ public class Battle extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
-		+ "battles" + File.separator + this.getID() + Extension.getBattleExtensionWithPeriod(),
-		Extension.getBattleExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "battles" + File.separator
+				+ this.getID() + Extension.getBattleExtensionWithPeriod(),
+			Extension.getBattleExtension())) {
+	    this.write(writer);
+	}
     }
 
     @Override

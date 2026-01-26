@@ -180,11 +180,13 @@ public abstract class BaseMonster extends Creature {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
-		+ "monsters" + File.separator + this.getID() + Extension.getMonsterExtensionWithPeriod(),
-		Extension.getMonsterExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "monsters" + File.separator
+				+ this.getID() + Extension.getMonsterExtensionWithPeriod(),
+			Extension.getMonsterExtension())) {
+	    this.write(writer);
+	}
     }
 
     @Override

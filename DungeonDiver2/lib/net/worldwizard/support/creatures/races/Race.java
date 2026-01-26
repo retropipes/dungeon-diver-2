@@ -60,10 +60,13 @@ public class Race extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator + "races"
-		+ File.separator + this.getID() + Extension.getRaceExtensionWithPeriod(), Extension.getRaceExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "races" + File.separator
+				+ this.getID() + Extension.getRaceExtensionWithPeriod(),
+			Extension.getRaceExtension())) {
+	    this.write(writer);
+	}
     }
 
     public static Race read(final XDataReader raceFile) throws IOException {

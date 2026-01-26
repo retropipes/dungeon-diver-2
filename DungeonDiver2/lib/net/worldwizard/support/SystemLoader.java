@@ -26,10 +26,9 @@ public class SystemLoader {
 
     // Methods
     public static Caste loadCaste(final String file) {
-	try {
-	    final XDataReader casteFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
-		    + "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
-		    Extension.getCasteExtension());
+	try (final XDataReader casteFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath()
+		+ File.separator + "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
+		Extension.getCasteExtension())) {
 	    final Caste c = Caste.read(casteFile);
 	    c.setSystemObject(true);
 	    casteFile.close();
@@ -41,10 +40,9 @@ public class SystemLoader {
     }
 
     public static Effect loadEffect(final String file) {
-	try {
-	    final XDataReader effectFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
-		    + "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
-		    Extension.getEffectExtension());
+	try (final XDataReader effectFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath()
+		+ File.separator + "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
+		Extension.getEffectExtension())) {
 	    final Effect e = Effect.read(effectFile);
 	    e.setSystemObject(true);
 	    effectFile.close();
@@ -56,10 +54,9 @@ public class SystemLoader {
     }
 
     public static CombatUsableItem loadCombatItem(final String file) {
-	try {
-	    final XDataReader itemFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
-		    + "items" + File.separator + file + Extension.getItemExtensionWithPeriod(),
-		    Extension.getItemExtension());
+	try (final XDataReader itemFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath()
+		+ File.separator + "items" + File.separator + file + Extension.getItemExtensionWithPeriod(),
+		Extension.getItemExtension())) {
 	    final CombatUsableItem i = CombatUsableItem.read(itemFile);
 	    i.setSystemObject(true);
 	    itemFile.close();
@@ -89,10 +86,9 @@ public class SystemLoader {
     }
 
     public static Race loadRace(final String file) {
-	try {
-	    final XDataReader raceFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
-		    + "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
-		    Extension.getRaceExtension());
+	try (final XDataReader raceFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath()
+		+ File.separator + "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
+		Extension.getRaceExtension())) {
 	    final Race r = Race.read(raceFile);
 	    r.setSystemObject(true);
 	    raceFile.close();
@@ -104,10 +100,9 @@ public class SystemLoader {
     }
 
     public static Spell loadSpell(final String file) {
-	try {
-	    final XDataReader spellFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath() + File.separator
-		    + "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
-		    Extension.getSpellExtension());
+	try (final XDataReader spellFile = DataIOFactory.createTagReader(Support.getSystemVariables().getBasePath()
+		+ File.separator + "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
+		Extension.getSpellExtension())) {
 	    final Spell s = Spell.read(spellFile);
 	    s.setSystemObject(true);
 	    spellFile.close();
@@ -119,11 +114,11 @@ public class SystemLoader {
     }
 
     public static SpellBook loadSpellBook(final String file) {
-	try {
-	    final XDataReader spellBookFile = DataIOFactory.createTagReader(
-		    Support.getSystemVariables().getBasePath() + File.separator + "spellbooks" + File.separator + file
-			    + Extension.getSpellBookExtensionWithPeriod(),
-		    Extension.getSpellBookExtension());
+	try (final XDataReader spellBookFile = DataIOFactory
+		.createTagReader(
+			Support.getSystemVariables().getBasePath() + File.separator + "spellbooks" + File.separator
+				+ file + Extension.getSpellBookExtensionWithPeriod(),
+			Extension.getSpellBookExtension())) {
 	    final SpellBook sb = SpellBook.read(spellBookFile);
 	    sb.setSystemObject(true);
 	    spellBookFile.close();

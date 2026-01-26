@@ -164,8 +164,7 @@ public class ScriptedAI extends AIRoutine {
 			} else if (testingWhat.equals(AIScriptConstants.META_COMMAND_ATTACK)) {
 			    testResult = !ScriptedAI.testAttack(ac);
 			} else {
-			    Support.logWarning(
-				    new RuntimeException("Unknown AI script command found: " + command));
+			    Support.logWarning(new RuntimeException("Unknown AI script command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
 			if (testResult) {
@@ -192,8 +191,7 @@ public class ScriptedAI extends AIRoutine {
 			} else if (testingWhat.equals(AIScriptConstants.META_COMMAND_ATTACK)) {
 			    testResult = ScriptedAI.testAttack(ac);
 			} else {
-			    Support.logWarning(
-				    new RuntimeException("Unknown AI script command found: " + command));
+			    Support.logWarning(new RuntimeException("Unknown AI script command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
 			if (testResult) {
@@ -211,8 +209,7 @@ public class ScriptedAI extends AIRoutine {
 				throw new NumberFormatException();
 			    }
 			} catch (final NumberFormatException nfe) {
-			    Support
-				    .logWarning(new RuntimeException("Malformed scan command found: " + command));
+			    Support.logWarning(new RuntimeException("Malformed scan command found: " + command));
 			    return AIRoutine.ACTION_END_TURN;
 			}
 			final int[] scanResult = ac.isEnemyNearby(scanRadius, scanRadius);
@@ -225,8 +222,7 @@ public class ScriptedAI extends AIRoutine {
 			}
 			this.counter++;
 		    } else {
-			Support
-				.logWarning(new RuntimeException("Unknown AI script command found: " + command));
+			Support.logWarning(new RuntimeException("Unknown AI script command found: " + command));
 			return AIRoutine.ACTION_END_TURN;
 		    }
 		}

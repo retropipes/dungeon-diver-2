@@ -25,10 +25,9 @@ public class CasteLoader {
 	if (file.startsWith("$")) {
 	    return SystemLoader.loadCaste(file);
 	} else {
-	    try {
-		final XDataReader casteFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
-			+ "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
-			Extension.getCasteExtension());
+	    try (final XDataReader casteFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath()
+		    + File.separator + "castes" + File.separator + file + Extension.getCasteExtensionWithPeriod(),
+		    Extension.getCasteExtension())) {
 		final Caste c = Caste.read(casteFile);
 		casteFile.close();
 		return c;

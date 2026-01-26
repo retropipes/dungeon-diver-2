@@ -25,10 +25,9 @@ public class RaceLoader {
 	if (file.startsWith("$")) {
 	    return SystemLoader.loadRace(file);
 	} else {
-	    try {
-		final XDataReader raceFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
-			+ "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
-			Extension.getRaceExtension());
+	    try (final XDataReader raceFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath()
+		    + File.separator + "races" + File.separator + file + Extension.getRaceExtensionWithPeriod(),
+		    Extension.getRaceExtension())) {
 		final Race r = Race.read(raceFile);
 		raceFile.close();
 		return r;

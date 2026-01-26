@@ -523,11 +523,13 @@ public class Effect extends Identifiable implements StatConstants {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator
-		+ "effects" + File.separator + this.getID() + Extension.getEffectExtensionWithPeriod(),
-		Extension.getEffectExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "effects" + File.separator
+				+ this.getID() + Extension.getEffectExtensionWithPeriod(),
+			Extension.getEffectExtension())) {
+	    this.write(writer);
+	}
     }
 
     @Override

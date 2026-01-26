@@ -255,10 +255,13 @@ public class Item extends Identifiable {
 	if (!dir.exists()) {
 	    dir.mkdirs();
 	}
-	final XDataWriter writer = DataIOFactory.createTagWriter(Support.getSystemVariables().getBasePath() + File.separator + "items"
-		+ File.separator + this.getID() + Extension.getItemExtensionWithPeriod(), Extension.getItemExtension());
-	this.write(writer);
-	writer.close();
+	try (final XDataWriter writer = DataIOFactory
+		.createTagWriter(
+			Support.getSystemVariables().getBasePath() + File.separator + "items" + File.separator
+				+ this.getID() + Extension.getItemExtensionWithPeriod(),
+			Extension.getItemExtension())) {
+	    this.write(writer);
+	}
     }
 
     @Override

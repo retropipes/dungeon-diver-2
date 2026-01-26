@@ -25,13 +25,10 @@ public class SpellLoader {
 	if (file.startsWith("$")) {
 	    return SystemLoader.loadSpell(file);
 	} else {
-	    try {
-		final XDataReader spellFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
-			+ "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
-			Extension.getSpellExtension());
-		final Spell s = Spell.read(spellFile);
-		spellFile.close();
-		return s;
+	    try (final XDataReader spellFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath()
+		    + File.separator + "spells" + File.separator + file + Extension.getSpellExtensionWithPeriod(),
+		    Extension.getSpellExtension())) {
+		return Spell.read(spellFile);
 	    } catch (final Exception ex) {
 		Support.logError(ex);
 		return null;

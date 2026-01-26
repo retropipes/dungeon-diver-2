@@ -20,11 +20,10 @@ public class MusicManager {
 
     public static void playMusic(final int musicID) {
 	String filename = MusicConstants.MUSIC_NAMES[musicID];
-	    final URL url = MusicManager.LOAD_CLASS
-		    .getResource(MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
+	final URL url = MusicManager.LOAD_CLASS.getResource(MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
 	MusicManager.CURRENT_MUSIC = DianeOggPlayer.loadLoopedResource(url);
 	if (MusicManager.CURRENT_MUSIC != null) {
-	 // Play the music
+	    // Play the music
 	    MusicManager.CURRENT_MUSIC.start();
 	}
     }

@@ -25,10 +25,9 @@ public class EffectLoader {
 	if (file.startsWith("$")) {
 	    return SystemLoader.loadEffect(file);
 	} else {
-	    try {
-		final XDataReader effectFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath() + File.separator
-			+ "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
-			Extension.getEffectExtension());
+	    try (final XDataReader effectFile = DataIOFactory.createTagReader(Support.getVariables().getBasePath()
+		    + File.separator + "effects" + File.separator + file + Extension.getEffectExtensionWithPeriod(),
+		    Extension.getEffectExtension())) {
 		final Effect e = Effect.read(effectFile);
 		effectFile.close();
 		return e;
